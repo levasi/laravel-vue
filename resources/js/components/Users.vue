@@ -32,14 +32,14 @@
                     <div class="modal-body">
                       <div class="form-group">
                         <input
-                          v-model="form.username"
+                          v-model="form.name"
                           placeholder="name"
                           type="text"
                           name="username"
                           class="form-control"
-                          :class="{ 'is-invalid': form.errors.has('username') }"
+                          :class="{ 'is-invalid': form.errors.has('name') }"
                         />
-                        <has-error :form="form" field="username"></has-error>
+                        <has-error :form="form" field="name"></has-error>
                       </div>
                       <div class="form-group">
                         <input
@@ -91,11 +91,11 @@
                         <has-error :form="form" field="password"></has-error>
                       </div>
                     </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
                   </form>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Create</button>
-                  </div>
                 </div>
               </div>
             </div>
@@ -135,7 +135,7 @@ export default {
   data() {
     return {
       form: new form({
-        username: "",
+        name: "",
         email: "",
         password: "",
         type: "",
@@ -147,9 +147,9 @@ export default {
   mounted() {
     console.log("Component mounted.");
   },
-  methosds: {
+  methods: {
     createUser() {
-      this.form.post("api.user");
+      this.form.post("/api/user");
     }
   }
 };
