@@ -154,7 +154,6 @@ export default {
     loadUsers() {
       axios.get("/api/user").then(({ data }) => {
         console.log(data);
-
         this.users = data.data;
       });
     },
@@ -162,6 +161,11 @@ export default {
       this.$Progress.start();
       this.form.post("/api/user");
       this.$Progress.finish();
+      Toast.fire({
+        icon: "success",
+        title: "New user created"
+      });
+      $("#exampleModal").modal("hide");
     }
   }
 };
