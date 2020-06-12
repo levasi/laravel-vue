@@ -27,14 +27,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return User::create([
-          'name' => $request['name'],
-          'email' => $request['email'],
-          'type' => $request['type'],
-          'bio' => $request['bio'],
-          'photo' => $request['photo'],
-          'password' => Hash::make($request['password'])
-        ]);
+
+      $request->validate([
+        'name'  => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users',
+        'password' => 'required|string|min:6'
+      ]);
+
+      return User::create([
+        'name' => $request['name'],
+        'email' => $request['email'],
+        'type' => $request['type'],
+        'bio' => $request['bio'],
+        'photo' => $request['photo'],
+        'password' => Hash::make($request['password'])
+      ]);
     }
 
     /**
