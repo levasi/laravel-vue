@@ -114,10 +114,10 @@
             <tbody>
               <tr v-for="(user, index) in users" :key="index">
                 <td>{{user.id}}</td>
-                <td>{{user.name}}</td>
+                <td>{{user.name | upTxt}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.type}}</td>
-                <td>{{user.updated_at}}</td>
+                <td>{{user.updated_at | momentDate}}</td>
                 <td>
                   <button>edit</button>
                   <button>delete</button>

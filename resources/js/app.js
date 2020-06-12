@@ -13,7 +13,7 @@ Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
+import moment from 'moment'
 Vue.use(VueRouter)
 
 import Dashboard from './components/Dashboard.vue'
@@ -31,6 +31,13 @@ const router = new VueRouter({
   routes
 })
 
+Vue.filter('upTxt', (value) => {
+  return value.charAt(0).toUpperCase() + value.slice(1)
+})
+
+Vue.filter('momentDate', (value) => {
+  return moment(value).format("MMM Do YY");
+})
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
