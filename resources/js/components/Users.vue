@@ -120,7 +120,7 @@
                 <td>{{user.updated_at | momentDate}}</td>
                 <td>
                   <button>edit</button>
-                  <button>delete</button>
+                  <button @click="deleteUser(user.id)">delete</button>
                 </td>
               </tr>
             </tbody>
@@ -151,6 +151,30 @@ export default {
     this.loadUsers();
   },
   methods: {
+    deleteUser(id) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then(result => {
+        this.form
+          .delete(`api/user/${id}`)
+          .then(response => {
+            if (result.value) {
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+              console.log(response);
+              this.loadUsers();
+            }
+          })
+          .catch(() => {
+            Swal("Failed", "there was something wrong", "warning");
+          });
+      });
+    },
     loadUsers() {
       axios.get("/api/user").then(({ data }) => {
         console.log(data);
@@ -159,14 +183,17 @@ export default {
     },
     createUser() {
       this.$Progress.start();
-      this.form.post("/api/user");
-      this.$Progress.finish();
-      Toast.fire({
-        icon: "success",
-        title: "New user created"
+      this.form.post("/api/user").then(response => {
+        if (response) {
+          this.$Progress.finish();
+          Toast.fire({
+            icon: "success",
+            title: "New user created"
+          });
+          $("#exampleModal").modal("hide");
+          this.loadUsers();
+        }
       });
-      $("#exampleModal").modal("hide");
-      this.loadUsers();
     }
   }
 };

@@ -2163,25 +2163,56 @@ __webpack_require__.r(__webpack_exports__);
     this.loadUsers();
   },
   methods: {
-    loadUsers: function loadUsers() {
+    deleteUser: function deleteUser(id) {
       var _this = this;
+
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then(function (result) {
+        _this.form["delete"]("api/user/".concat(id)).then(function (response) {
+          if (result.value) {
+            Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            console.log(response);
+
+            _this.loadUsers();
+          }
+        })["catch"](function () {
+          Swal("Failed", "there was something wrong", "warning");
+        });
+      });
+    },
+    loadUsers: function loadUsers() {
+      var _this2 = this;
 
       axios.get("/api/user").then(function (_ref) {
         var data = _ref.data;
         console.log(data);
-        _this.users = data.data;
+        _this2.users = data.data;
       });
     },
     createUser: function createUser() {
+      var _this3 = this;
+
       this.$Progress.start();
-      this.form.post("/api/user");
-      this.$Progress.finish();
-      Toast.fire({
-        icon: "success",
-        title: "New user created"
+      this.form.post("/api/user").then(function (response) {
+        if (response) {
+          _this3.$Progress.finish();
+
+          Toast.fire({
+            icon: "success",
+            title: "New user created"
+          });
+          $("#exampleModal").modal("hide");
+
+          _this3.loadUsers();
+        }
       });
-      $("#exampleModal").modal("hide");
-      this.loadUsers();
     }
   }
 });
@@ -63429,7 +63460,21 @@ var render = function() {
                     _vm._v(_vm._s(_vm._f("momentDate")(user.updated_at)))
                   ]),
                   _vm._v(" "),
-                  _vm._m(3, true)
+                  _c("td", [
+                    _c("button", [_vm._v("edit")]),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        on: {
+                          click: function($event) {
+                            return _vm.deleteUser(user.id)
+                          }
+                        }
+                      },
+                      [_vm._v("delete")]
+                    )
+                  ])
                 ])
               }),
               0
@@ -63505,16 +63550,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Modify")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("button", [_vm._v("edit")]),
-      _vm._v(" "),
-      _c("button", [_vm._v("delete")])
     ])
   }
 ]
