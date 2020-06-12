@@ -2181,6 +2181,7 @@ __webpack_require__.r(__webpack_exports__);
         title: "New user created"
       });
       $("#exampleModal").modal("hide");
+      this.loadUsers();
     }
   }
 });

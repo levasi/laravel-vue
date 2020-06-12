@@ -166,6 +166,7 @@ export default {
         title: "New user created"
       });
       $("#exampleModal").modal("hide");
+      this.loadUsers();
     }
   }
 };
