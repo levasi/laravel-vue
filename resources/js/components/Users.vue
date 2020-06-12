@@ -107,15 +107,17 @@
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Type</th>
+                <th scope="col">Created at</th>
                 <th scope="col">Modify</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+              <tr v-for="(user, index) in users" :key="index">
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.type}}</td>
+                <td>{{user.updated_at}}</td>
                 <td>
                   <button>edit</button>
                   <button>delete</button>
@@ -134,6 +136,7 @@ export default {
   name: "Users",
   data() {
     return {
+      users: {},
       form: new form({
         name: "",
         email: "",
@@ -144,10 +147,17 @@ export default {
       })
     };
   },
-  mounted() {
-    console.log("Component mounted.");
+  created() {
+    this.loadUsers();
   },
   methods: {
+    loadUsers() {
+      axios.get("/api/user").then(({ data }) => {
+        console.log(data);
+
+        this.users = data.data;
+      });
+    },
     createUser() {
       this.form.post("/api/user");
     }
