@@ -157,6 +157,7 @@ export default {
     return {
       users: {},
       form: new form({
+        id: "",
         name: "",
         email: "",
         password: "",
@@ -224,6 +225,23 @@ export default {
     },
     updateUser() {
       console.log("update user");
+      this.$Progress.start();
+      this.form
+        .put("api/user/" + this.form.id)
+        .then(() => {
+          // success
+          this.loadUsers();
+          this.$Progress.finish();
+          $("#exampleModal").modal("hide");
+          Toast.fire({
+            icon: "success",
+            title: "User was updated"
+          });
+        })
+        .catch(error => {
+          console.log(error);
+          this.$Progress.fail();
+        });
     }
   }
 };

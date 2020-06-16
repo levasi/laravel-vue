@@ -2169,6 +2169,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       users: {},
       form: new form({
+        id: "",
         name: "",
         email: "",
         password: "",
@@ -2243,7 +2244,26 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     updateUser: function updateUser() {
+      var _this4 = this;
+
       console.log("update user");
+      this.$Progress.start();
+      this.form.put("api/user/" + this.form.id).then(function () {
+        // success
+        _this4.loadUsers();
+
+        _this4.$Progress.finish();
+
+        $("#exampleModal").modal("hide");
+        Toast.fire({
+          icon: "success",
+          title: "User was updated"
+        });
+      })["catch"](function (error) {
+        console.log(error);
+
+        _this4.$Progress.fail();
+      });
     }
   }
 });
