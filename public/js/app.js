@@ -2144,6 +2144,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Users",
   data: function data() {
@@ -2156,7 +2175,8 @@ __webpack_require__.r(__webpack_exports__);
         type: "",
         bio: "",
         photo: ""
-      })
+      }),
+      modalMode: null
     };
   },
   created: function created() {
@@ -2197,6 +2217,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     editModal: function editModal(user) {
+      this.modalMode = "update";
       console.log(user);
       this.form.fill(user);
       $("#exampleModal").modal("show");
@@ -2216,8 +2237,13 @@ __webpack_require__.r(__webpack_exports__);
           $("#exampleModal").modal("hide");
 
           _this3.loadUsers();
+
+          _this3.form.reset();
         }
       });
+    },
+    updateUser: function updateUser() {
+      console.log("update user");
     }
   }
 });
@@ -63155,6 +63181,11 @@ var render = function() {
                   type: "button",
                   "data-toggle": "modal",
                   "data-target": "#exampleModal"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.modalMode = "create"
+                  }
                 }
               },
               [_vm._v("Add user")]
@@ -63175,7 +63206,31 @@ var render = function() {
               [
                 _c("div", { staticClass: "modal-dialog" }, [
                   _c("div", { staticClass: "modal-content" }, [
-                    _vm._m(0),
+                    _c("div", { staticClass: "modal-header" }, [
+                      _vm.modalMode === "create"
+                        ? _c(
+                            "h5",
+                            {
+                              staticClass: "modal-title",
+                              attrs: { id: "exampleModalLabel" }
+                            },
+                            [_vm._v("Create User")]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.modalMode === "update"
+                        ? _c(
+                            "h5",
+                            {
+                              staticClass: "modal-title",
+                              attrs: { id: "exampleModalLabel" }
+                            },
+                            [_vm._v("Update User")]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm._m(0)
+                    ]),
                     _vm._v(" "),
                     _c(
                       "form",
@@ -63437,7 +63492,43 @@ var render = function() {
                           )
                         ]),
                         _vm._v(" "),
-                        _vm._m(1)
+                        _c("div", { staticClass: "modal-footer" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-secondary",
+                              attrs: { type: "button", "data-dismiss": "modal" }
+                            },
+                            [_vm._v("Close")]
+                          ),
+                          _vm._v(" "),
+                          _vm.modalMode === "create"
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-primary",
+                                  attrs: { type: "submit" }
+                                },
+                                [_vm._v("Create")]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.modalMode === "update"
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-success",
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.updateUser($event)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Update")]
+                              )
+                            : _vm._e()
+                        ])
                       ]
                     )
                   ])
@@ -63447,7 +63538,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("table", { staticClass: "table" }, [
-            _vm._m(2),
+            _vm._m(1),
             _vm._v(" "),
             _c(
               "tbody",
@@ -63505,47 +63596,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c(
-        "h5",
-        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
-        [_vm._v("Modal title")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
-        },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Create")]
-      )
-    ])
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
   },
   function() {
     var _vm = this
