@@ -119,7 +119,7 @@
                 <td>{{user.type}}</td>
                 <td>{{user.updated_at | momentDate}}</td>
                 <td>
-                  <button>edit</button>
+                  <button @click="editModal(user)">edit</button>
                   <button @click="deleteUser(user.id)">delete</button>
                 </td>
               </tr>
@@ -180,6 +180,11 @@ export default {
         console.log(data);
         this.users = data.data;
       });
+    },
+    editModal(user) {
+      console.log(user);
+      this.form.fill(user);
+      $("#exampleModal").modal("show");
     },
     createUser() {
       this.$Progress.start();

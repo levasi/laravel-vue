@@ -141,23 +141,12 @@
               </router-link>
             </li>
             <li class="nav-item has-treeview">
-              <a href="" class="nav-link active">
-                <i class="nav-icon fas fa-cog"></i>
+              <router-link to="/users" class="nav-link">
+                <i class="nav-icon fas fa-users"></i>
                 <p>
-                  Management
-                  <i class="right fas fa-angle-left"></i>
+                  Users
                 </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <router-link to="/users" class="nav-link">
-                    <i class="nav-icon fas fa-users"></i>
-                    <p>
-                      Users
-                    </p>
-                  </router-link>
-                </li>
-              </ul>
+              </router-link>
             </li>
             <li class="nav-item">
               <router-link to="/profile" class="nav-link">

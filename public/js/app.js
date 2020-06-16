@@ -2196,6 +2196,11 @@ __webpack_require__.r(__webpack_exports__);
         _this2.users = data.data;
       });
     },
+    editModal: function editModal(user) {
+      console.log(user);
+      this.form.fill(user);
+      $("#exampleModal").modal("show");
+    },
     createUser: function createUser() {
       var _this3 = this;
 
@@ -63461,7 +63466,17 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("td", [
-                    _c("button", [_vm._v("edit")]),
+                    _c(
+                      "button",
+                      {
+                        on: {
+                          click: function($event) {
+                            return _vm.editModal(user)
+                          }
+                        }
+                      },
+                      [_vm._v("edit")]
+                    ),
                     _vm._v(" "),
                     _c(
                       "button",
