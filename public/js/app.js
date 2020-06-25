@@ -2131,6 +2131,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2142,17 +2147,37 @@ __webpack_require__.r(__webpack_exports__);
         type: "",
         bio: "",
         photo: ""
-      })
+      }),
+      photo: ""
     };
   },
+  methods: {
+    uploadFile: function uploadFile(event) {
+      var _this = this;
+
+      var file = event.target.files[0];
+      var reader = new FileReader();
+
+      reader.onloadend = function (file) {
+        _this.form.photo = reader.result;
+      };
+
+      reader.readAsDataURL(file);
+    },
+    updateProfile: function updateProfile() {
+      this.form.put("api/profile").then(function (response) {
+        console.log(response);
+      })["catch"](function () {});
+    }
+  },
   created: function created() {
-    var _this = this;
+    var _this2 = this;
 
     var url = "api/profile";
     axios.get(url).then(function (_ref) {
       var data = _ref.data;
 
-      _this.form.fill(data);
+      _this2.form.fill(data);
     })["catch"](function (error) {
       console.log(error);
     });
@@ -64959,7 +64984,7 @@ var render = function() {
                     [_vm._v("Name")]
                   ),
                   _vm._v(" "),
-                  _c("div", { attrs: { "data-children-count": "1" } }, [
+                  _c("div", [
                     _c("input", {
                       directives: [
                         {
@@ -64971,7 +64996,7 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
-                        type: "email",
+                        type: "text",
                         id: "inputName",
                         placeholder: "Name",
                         "data-kwimpalastatus": "alive",
@@ -65240,7 +65265,7 @@ var render = function() {
                     [_vm._v("Email")]
                   ),
                   _vm._v(" "),
-                  _c("div", { attrs: { "data-children-count": "1" } }, [
+                  _c("div", [
                     _c("input", {
                       directives: [
                         {
@@ -65515,9 +65540,39 @@ var render = function() {
                 _vm._v(" "),
                 _vm._m(2),
                 _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "exampleInputFile" } }, [
+                    _vm._v("File input")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c("input", {
+                      attrs: { type: "file", id: "exampleInputFile" },
+                      on: { change: _vm.uploadFile }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
                 _vm._m(3),
                 _vm._v(" "),
-                _vm._m(4)
+                _c("div", { staticClass: "form-group" }, [
+                  _c("div", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "submit" },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.updateProfile($event)
+                          }
+                        }
+                      },
+                      [_vm._v("Submit")]
+                    )
+                  ])
+                ])
               ])
             ]
           )
@@ -65572,7 +65627,7 @@ var staticRenderFns = [
         _vm._v("Experience")
       ]),
       _vm._v(" "),
-      _c("div", { attrs: { "data-children-count": "1" } }, [
+      _c("div", [
         _c("textarea", {
           staticClass: "form-control",
           attrs: { id: "inputExperience", placeholder: "Experience" }
@@ -65587,7 +65642,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "form-group" }, [
       _c("label", { attrs: { for: "inputSkills" } }, [_vm._v("Skills")]),
       _vm._v(" "),
-      _c("div", { attrs: { "data-children-count": "1" } }, [
+      _c("div", [
         _c("input", {
           staticClass: "form-control",
           attrs: { type: "text", id: "inputSkills", placeholder: "Skills" }
@@ -65602,26 +65657,12 @@ var staticRenderFns = [
     return _c("div", { staticClass: "form-group" }, [
       _c("div", [
         _c("div", { staticClass: "checkbox" }, [
-          _c("label", { attrs: { "data-children-count": "1" } }, [
+          _c("label", [
             _c("input", { attrs: { type: "checkbox" } }),
             _vm._v(" I agree to the\n                    "),
             _c("a", { attrs: { href: "#" } }, [_vm._v("terms and conditions")])
           ])
         ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("div", [
-        _c(
-          "button",
-          { staticClass: "btn btn-danger", attrs: { type: "submit" } },
-          [_vm._v("Submit")]
-        )
       ])
     ])
   }

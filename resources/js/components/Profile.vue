@@ -53,9 +53,9 @@
               <div class="form-group">
                 <label for="inputName" class="control-label">Name</label>
 
-                <div data-children-count="1">
+                <div>
                   <input
-                    type="email"
+                    type="text"
                     class="form-control"
                     id="inputName"
                     placeholder="Name"
@@ -71,7 +71,7 @@
               <div class="form-group">
                 <label for="inputEmail" class="control-label">Email</label>
 
-                <div data-children-count="1">
+                <div>
                   <input
                     type="email"
                     class="form-control"
@@ -89,21 +89,26 @@
 
               <div class="form-group">
                 <label for="inputExperience">Experience</label>
-                <div data-children-count="1">
+                <div>
                   <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputSkills">Skills</label>
-
-                <div data-children-count="1">
+                <div>
                   <input type="text" class="form-control" id="inputSkills" placeholder="Skills" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputFile">File input</label>
+                <div>
+                  <input @change="uploadFile" type="file" id="exampleInputFile" />
                 </div>
               </div>
               <div class="form-group">
                 <div>
                   <div class="checkbox">
-                    <label data-children-count="1">
+                    <label>
                       <input type="checkbox" /> I agree to the
                       <a href="#">terms and conditions</a>
                     </label>
@@ -112,7 +117,7 @@
               </div>
               <div class="form-group">
                 <div>
-                  <button type="submit" class="btn btn-danger">Submit</button>
+                  <button @click.prevent="updateProfile" type="submit" class="btn btn-danger">Submit</button>
                 </div>
               </div>
             </form>
@@ -136,8 +141,27 @@ export default {
         type: "",
         bio: "",
         photo: ""
-      })
+      }),
+      photo: ""
     };
+  },
+  methods: {
+    uploadFile(event) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onloadend = file => {
+        this.form.photo = reader.result;
+      };
+      reader.readAsDataURL(file);
+    },
+    updateProfile() {
+      this.form
+        .put("api/profile")
+        .then(response => {
+          console.log(response);
+        })
+        .catch(() => {});
+    }
   },
   created() {
     const url = "api/profile";
