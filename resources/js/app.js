@@ -30,7 +30,7 @@ const Toast = Swal.mixin({
 window.Toast = Toast
 import moment from 'moment'
 
-window.form = Form
+window.Form = Form
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
 import Vue from 'vue'

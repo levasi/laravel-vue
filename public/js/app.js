@@ -2130,25 +2130,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log("Component mounted.");
+  data: function data() {
+    return {
+      form: new Form({
+        id: "",
+        name: "",
+        email: "",
+        password: "",
+        type: "",
+        bio: "",
+        photo: ""
+      })
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    var url = "api/profile";
+    axios.get(url).then(function (_ref) {
+      var data = _ref.data;
+
+      _this.form.fill(data);
+    })["catch"](function (error) {
+      console.log(error);
+    });
   }
 });
 
@@ -64911,933 +64917,696 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c("div", { staticClass: "card mt-3" }, [
+          _c("div", { staticClass: "card-header" }, [_vm._v("Profile")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "box box-widget widget-user" }, [
+              _c("div", { staticClass: "widget-user-header" }, [
+                _c("h3", { staticClass: "widget-user-username" }, [
+                  _vm._v(_vm._s(_vm.form.name))
+                ]),
+                _vm._v(" "),
+                _c("h5", { staticClass: "widget-user-desc" }, [
+                  _vm._v("Web Designer")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "widget-user-image" }),
+              _vm._v(" "),
+              _vm._m(0)
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "tab-content" }, [
+          _c(
+            "div",
+            { staticClass: "tab-pane active", attrs: { id: "settings" } },
+            [
+              _c("form", { staticClass: "form-horizontal" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "control-label",
+                      attrs: { for: "inputName" }
+                    },
+                    [_vm._v("Name")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { attrs: { "data-children-count": "1" } }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.name,
+                          expression: "form.name"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "email",
+                        id: "inputName",
+                        placeholder: "Name",
+                        "data-kwimpalastatus": "alive",
+                        "data-kwimpalaid": "1593026351318-1"
+                      },
+                      domProps: { value: _vm.form.name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "name", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", {
+                      staticStyle: {
+                        animation: "initial",
+                        transition: "initial",
+                        color: "initial",
+                        "color-scheme": "initial",
+                        font: "initial",
+                        "font-feature-settings": "initial",
+                        "font-kerning": "initial",
+                        "font-optical-sizing": "initial",
+                        "font-variation-settings": "initial",
+                        "text-orientation": "initial",
+                        "text-rendering": "initial",
+                        "-webkit-font-smoothing": "initial",
+                        "-webkit-locale": "initial",
+                        "-webkit-text-orientation": "initial",
+                        "-webkit-writing-mode": "initial",
+                        "writing-mode": "initial",
+                        zoom: "initial",
+                        "place-content": "initial",
+                        "place-items": "initial",
+                        "place-self": "initial",
+                        "alignment-baseline": "initial",
+                        "backdrop-filter": "initial",
+                        "backface-visibility": "initial",
+                        background:
+                          'url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEzLjUgNS4yODgxMUMxMy41IDUuMTkzNzYgMTMuNDA1NyA1LjA5OTQxIDEzLjI3MzYgNS4wNjE2NkwxMS42ODg2IDQuNDc2NjZDMTEuNDI0NCA0LjM2MzQxIDExLjEyMjUgNC40OTU1MSAxMS4xMjI1IDQuNjg0MjZWMTEuNTgxN0MxMS4xMjk5IDExLjYzNTUgMTEuMTUxMiAxMS42ODY0IDExLjE4NDMgMTEuNzI5NEMxMS4yMTc0IDExLjc3MjQgMTEuMjYxMSAxMS44MDYxIDExLjMxMTIgMTEuODI3MUwxMi45MzQxIDEyLjQxMjFDMTMuMTc5NCAxMi41MDY0IDEzLjUwMDIgMTIuMzc0MyAxMy41MDAyIDEyLjE2NjdMMTMuNSA1LjI4ODExWk05LjQ3OTQyIDEwLjU0MzdDOS40Nzk0MiAxMC40NDk0IDkuMzg1MDcgMTAuMzU1IDkuMjUyOTcgMTAuMzE3M0w3LjY2Nzk3IDkuNzMyMjZDNy40MDM4MiA5LjYxOTAxIDcuMTAxODcgOS43NTExMSA3LjEwMTg3IDkuOTM5ODFWMTQuMjQyNEM3LjEwOTMxIDE0LjI5NjEgNy4xMzA2MiAxNC4zNDcgNy4xNjM3MSAxNC4zOUM3LjE5NjggMTQuNDMzMSA3LjI0MDUyIDE0LjQ2NjcgNy4yOTA1NyAxNC40ODc3TDguOTEzNDcgMTUuMDcyN0M5LjE1ODc3IDE1LjE2NzEgOS40Nzk1NyAxNS4wMzUgOS40Nzk1NyAxNC44Mjc0TDkuNDc5NDIgMTAuNTQzN1pNOS40Nzk0MiAxLjc0OTc2QzkuNDc5NDIgMS42NTU0MSA5LjM4NTA3IDEuNTYxMDYgOS4yNTI5NyAxLjUyMzMxTDcuNjY3OTcgMC45MzgzMTFDNy40MDM4MiAwLjgyNTA2MSA3LjEwMTg3IDAuOTU3MTYxIDcuMTAxODcgMS4xNDU4NlY1LjQ0ODQxQzcuMTA5MzEgNS41MDIxNyA3LjEzMDYyIDUuNTUzMDcgNy4xNjM3MSA1LjU5NjA5QzcuMTk2OCA1LjYzOTEyIDcuMjQwNTIgNS42NzI3OCA3LjI5MDU3IDUuNjkzNzZMOC45MTM0NyA2LjI3ODc2QzkuMTU4NzcgNi4zNzMxMSA5LjQ3OTU3IDYuMjQxMDEgOS40Nzk1NyA2LjAzMzQxTDkuNDc5NDIgMS43NDk3NlpNNS40NzkxNyAxLjQxOTc2QzUuNDc5MTcgMS4zMjUzNiA1LjM4NDgyIDEuMjMxMDEgNS4yNTI3MiAxLjE5MzMxTDMuNjY3NzIgMC42MDgzMTFDMy40MDM1NyAwLjQ5NTA2MSAzLjEwMTYyIDAuNjI3MTYxIDMuMTAxNjIgMC44MTU4NjFWMTQuNTkxNEMzLjEwOTA1IDE0LjY0NTIgMy4xMzAzNiAxNC42OTYxIDMuMTYzNDUgMTQuNzM5MUMzLjE5NjU0IDE0Ljc4MjEgMy4yNDAyNyAxNC44MTU3IDMuMjkwMzIgMTQuODM2N0w0LjkxMzIyIDE1LjQyMTdDNS4xNTg1MiAxNS41MTYxIDUuNDc5MzIgMTUuMzg0IDUuNDc5MzIgMTUuMTc2NEw1LjQ3OTE3IDEuNDE5NzZaIiBmaWxsPSIjMEU2NDc2Ii8+Cjwvc3ZnPgo=") center center / contain no-repeat',
+                        "background-blend-mode": "initial",
+                        "baseline-shift": "initial",
+                        "block-size": "initial",
+                        "border-block-end": "initial",
+                        "border-block-start": "initial",
+                        border: "none",
+                        "border-radius": "initial",
+                        "border-collapse": "initial",
+                        "border-inline-end": "initial",
+                        "border-inline-start": "initial",
+                        bottom: "initial",
+                        "box-shadow": "initial",
+                        "box-sizing": "initial",
+                        "break-after": "initial",
+                        "break-before": "initial",
+                        "break-inside": "initial",
+                        "buffered-rendering": "initial",
+                        "caption-side": "initial",
+                        "caret-color": "initial",
+                        clear: "initial",
+                        clip: "initial",
+                        "clip-path": "initial",
+                        "clip-rule": "initial",
+                        "color-interpolation": "initial",
+                        "color-interpolation-filters": "initial",
+                        "color-rendering": "initial",
+                        columns: "initial",
+                        "column-fill": "initial",
+                        gap: "initial",
+                        "column-rule": "initial",
+                        "column-span": "initial",
+                        contain: "initial",
+                        "contain-intrinsic-size": "initial",
+                        content: "initial",
+                        "counter-increment": "initial",
+                        "counter-reset": "initial",
+                        cursor: "initial",
+                        cx: "initial",
+                        cy: "initial",
+                        d: "initial",
+                        display: "inline",
+                        "dominant-baseline": "initial",
+                        "empty-cells": "initial",
+                        fill: "initial",
+                        "fill-opacity": "initial",
+                        "fill-rule": "initial",
+                        filter: "initial",
+                        flex: "initial",
+                        "flex-flow": "initial",
+                        float: "initial",
+                        "flood-color": "initial",
+                        "flood-opacity": "initial",
+                        grid: "initial",
+                        "grid-area": "initial",
+                        height: "16px",
+                        hyphens: "initial",
+                        "image-orientation": "initial",
+                        "image-rendering": "initial",
+                        "inline-size": "initial",
+                        isolation: "initial",
+                        left: "447px",
+                        "letter-spacing": "initial",
+                        "lighting-color": "initial",
+                        "line-break": "initial",
+                        "list-style": "initial",
+                        "margin-block-end": "initial",
+                        "margin-block-start": "initial",
+                        margin: "initial",
+                        "margin-inline-end": "initial",
+                        "margin-inline-start": "initial",
+                        marker: "initial",
+                        mask: "initial",
+                        "mask-type": "initial",
+                        "max-block-size": "initial",
+                        "max-height": "initial",
+                        "max-inline-size": "initial",
+                        "max-width": "initial",
+                        "min-block-size": "initial",
+                        "min-height": "initial",
+                        "min-inline-size": "initial",
+                        "min-width": "16px",
+                        "mix-blend-mode": "initial",
+                        "object-fit": "initial",
+                        "object-position": "initial",
+                        offset: "initial",
+                        opacity: "1",
+                        order: "initial",
+                        "origin-trial-test-property": "initial",
+                        orphans: "initial",
+                        outline: "initial",
+                        "outline-offset": "initial",
+                        "overflow-anchor": "initial",
+                        "overflow-wrap": "initial",
+                        overflow: "initial",
+                        "overscroll-behavior-block": "initial",
+                        "overscroll-behavior-inline": "initial",
+                        "overscroll-behavior": "initial",
+                        "padding-block-end": "initial",
+                        "padding-block-start": "initial",
+                        padding: "initial",
+                        "padding-inline-end": "initial",
+                        "padding-inline-start": "initial",
+                        "paint-order": "initial",
+                        perspective: "initial",
+                        "perspective-origin": "initial",
+                        "pointer-events": "initial",
+                        position: "absolute",
+                        quotes: "initial",
+                        r: "initial",
+                        resize: "initial",
+                        right: "initial",
+                        rx: "initial",
+                        ry: "initial",
+                        "scroll-behavior": "initial",
+                        "scroll-margin-block": "initial",
+                        "scroll-margin": "initial",
+                        "scroll-margin-inline": "initial",
+                        "scroll-padding-block": "initial",
+                        "scroll-padding": "initial",
+                        "scroll-padding-inline": "initial",
+                        "scroll-snap-align": "initial",
+                        "scroll-snap-stop": "initial",
+                        "scroll-snap-type": "initial",
+                        "shape-image-threshold": "initial",
+                        "shape-margin": "initial",
+                        "shape-outside": "initial",
+                        "shape-rendering": "initial",
+                        size: "initial",
+                        speak: "initial",
+                        "stop-color": "initial",
+                        "stop-opacity": "initial",
+                        stroke: "initial",
+                        "stroke-dasharray": "initial",
+                        "stroke-dashoffset": "initial",
+                        "stroke-linecap": "initial",
+                        "stroke-linejoin": "initial",
+                        "stroke-miterlimit": "initial",
+                        "stroke-opacity": "initial",
+                        "stroke-width": "initial",
+                        "tab-size": "initial",
+                        "table-layout": "initial",
+                        "text-align": "initial",
+                        "text-align-last": "initial",
+                        "text-anchor": "initial",
+                        "text-combine-upright": "initial",
+                        "text-decoration": "initial",
+                        "text-decoration-skip-ink": "initial",
+                        "text-indent": "initial",
+                        "text-overflow": "initial",
+                        "text-shadow": "initial",
+                        "text-size-adjust": "initial",
+                        "text-transform": "initial",
+                        "text-underline-position": "initial",
+                        top: "9px",
+                        "touch-action": "initial",
+                        transform: "initial",
+                        "transform-box": "initial",
+                        "transform-origin": "initial",
+                        "transform-style": "initial",
+                        "user-select": "initial",
+                        "vector-effect": "initial",
+                        "vertical-align": "initial",
+                        visibility: "visible",
+                        "-webkit-app-region": "initial",
+                        "-webkit-appearance": "initial",
+                        "border-spacing": "initial",
+                        "-webkit-border-image": "initial",
+                        "-webkit-box-align": "initial",
+                        "-webkit-box-decoration-break": "initial",
+                        "-webkit-box-direction": "initial",
+                        "-webkit-box-flex": "initial",
+                        "-webkit-box-ordinal-group": "initial",
+                        "-webkit-box-orient": "initial",
+                        "-webkit-box-pack": "initial",
+                        "-webkit-box-reflect": "initial",
+                        "-webkit-font-size-delta": "initial",
+                        "-webkit-highlight": "initial",
+                        "-webkit-hyphenate-character": "initial",
+                        "-webkit-line-break": "initial",
+                        "-webkit-line-clamp": "initial",
+                        "-webkit-mask-box-image": "initial",
+                        "-webkit-mask": "initial",
+                        "-webkit-mask-composite": "initial",
+                        "-webkit-perspective-origin-x": "initial",
+                        "-webkit-perspective-origin-y": "initial",
+                        "-webkit-print-color-adjust": "initial",
+                        "-webkit-rtl-ordering": "initial",
+                        "-webkit-ruby-position": "initial",
+                        "-webkit-tap-highlight-color": "initial",
+                        "-webkit-text-combine": "initial",
+                        "-webkit-text-decorations-in-effect": "initial",
+                        "-webkit-text-emphasis": "initial",
+                        "-webkit-text-emphasis-position": "initial",
+                        "-webkit-text-fill-color": "initial",
+                        "-webkit-text-security": "initial",
+                        "-webkit-text-stroke": "initial",
+                        "-webkit-transform-origin-x": "initial",
+                        "-webkit-transform-origin-y": "initial",
+                        "-webkit-transform-origin-z": "initial",
+                        "-webkit-user-drag": "initial",
+                        "-webkit-user-modify": "initial",
+                        "white-space": "initial",
+                        widows: "initial",
+                        width: "16px",
+                        "will-change": "initial",
+                        "word-break": "initial",
+                        "word-spacing": "initial",
+                        x: "initial",
+                        y: "initial",
+                        "z-index": "auto"
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(1),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _vm._m(3),
+                _vm._v(" "),
+                _vm._m(4),
+                _vm._v(" "),
+                _vm._m(5)
+              ])
+            ]
+          )
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-12" }, [
-          _c("div", { staticClass: "card mt-3" }, [
-            _c("div", { staticClass: "card-header" }, [_vm._v("Profile")]),
+    return _c("div", { staticClass: "box-footer" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-sm-4 border-right" }, [
+          _c("div", { staticClass: "description-block" }, [
+            _c("h5", { staticClass: "description-header" }, [_vm._v("3,200")]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("div", { staticClass: "box box-widget widget-user" }, [
-                _c("div", { staticClass: "widget-user-header" }, [
-                  _c("h3", { staticClass: "widget-user-username" }, [
-                    _vm._v("Elizabeth Pierce")
-                  ]),
-                  _vm._v(" "),
-                  _c("h5", { staticClass: "widget-user-desc" }, [
-                    _vm._v("Web Designer")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "widget-user-image" }),
-                _vm._v(" "),
-                _c("div", { staticClass: "box-footer" }, [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-sm-4 border-right" }, [
-                      _c("div", { staticClass: "description-block" }, [
-                        _c("h5", { staticClass: "description-header" }, [
-                          _vm._v("3,200")
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "description-text" }, [
-                          _vm._v("SALES")
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-4 border-right" }, [
-                      _c("div", { staticClass: "description-block" }, [
-                        _c("h5", { staticClass: "description-header" }, [
-                          _vm._v("13,000")
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "description-text" }, [
-                          _vm._v("FOLLOWERS")
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-4" }, [
-                      _c("div", { staticClass: "description-block" }, [
-                        _c("h5", { staticClass: "description-header" }, [
-                          _vm._v("35")
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "description-text" }, [
-                          _vm._v("PRODUCTS")
-                        ])
-                      ])
-                    ])
-                  ])
-                ])
-              ])
+            _c("span", { staticClass: "description-text" }, [_vm._v("SALES")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-4 border-right" }, [
+          _c("div", { staticClass: "description-block" }, [
+            _c("h5", { staticClass: "description-header" }, [_vm._v("13,000")]),
+            _vm._v(" "),
+            _c("span", { staticClass: "description-text" }, [
+              _vm._v("FOLLOWERS")
             ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "tab-content" }, [
-            _c(
-              "div",
-              { staticClass: "tab-pane active", attrs: { id: "settings" } },
-              [
-                _c("form", { staticClass: "form-horizontal" }, [
-                  _c("div", { staticClass: "form-group" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "col-sm-2 control-label",
-                        attrs: { for: "inputName" }
-                      },
-                      [_vm._v("Name")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { attrs: { "data-children-count": "1" } }, [
-                      _c("input", {
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "email",
-                          id: "inputName",
-                          placeholder: "Name",
-                          "data-kwimpalastatus": "alive",
-                          "data-kwimpalaid": "1593026351318-1"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("span", {
-                        staticStyle: {
-                          animation: "initial",
-                          transition: "initial",
-                          color: "initial",
-                          "color-scheme": "initial",
-                          font: "initial",
-                          "font-feature-settings": "initial",
-                          "font-kerning": "initial",
-                          "font-optical-sizing": "initial",
-                          "font-variation-settings": "initial",
-                          "text-orientation": "initial",
-                          "text-rendering": "initial",
-                          "-webkit-font-smoothing": "initial",
-                          "-webkit-locale": "initial",
-                          "-webkit-text-orientation": "initial",
-                          "-webkit-writing-mode": "initial",
-                          "writing-mode": "initial",
-                          zoom: "initial",
-                          "place-content": "initial",
-                          "place-items": "initial",
-                          "place-self": "initial",
-                          "alignment-baseline": "initial",
-                          "backdrop-filter": "initial",
-                          "backface-visibility": "initial",
-                          background:
-                            'url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEzLjUgNS4yODgxMUMxMy41IDUuMTkzNzYgMTMuNDA1NyA1LjA5OTQxIDEzLjI3MzYgNS4wNjE2NkwxMS42ODg2IDQuNDc2NjZDMTEuNDI0NCA0LjM2MzQxIDExLjEyMjUgNC40OTU1MSAxMS4xMjI1IDQuNjg0MjZWMTEuNTgxN0MxMS4xMjk5IDExLjYzNTUgMTEuMTUxMiAxMS42ODY0IDExLjE4NDMgMTEuNzI5NEMxMS4yMTc0IDExLjc3MjQgMTEuMjYxMSAxMS44MDYxIDExLjMxMTIgMTEuODI3MUwxMi45MzQxIDEyLjQxMjFDMTMuMTc5NCAxMi41MDY0IDEzLjUwMDIgMTIuMzc0MyAxMy41MDAyIDEyLjE2NjdMMTMuNSA1LjI4ODExWk05LjQ3OTQyIDEwLjU0MzdDOS40Nzk0MiAxMC40NDk0IDkuMzg1MDcgMTAuMzU1IDkuMjUyOTcgMTAuMzE3M0w3LjY2Nzk3IDkuNzMyMjZDNy40MDM4MiA5LjYxOTAxIDcuMTAxODcgOS43NTExMSA3LjEwMTg3IDkuOTM5ODFWMTQuMjQyNEM3LjEwOTMxIDE0LjI5NjEgNy4xMzA2MiAxNC4zNDcgNy4xNjM3MSAxNC4zOUM3LjE5NjggMTQuNDMzMSA3LjI0MDUyIDE0LjQ2NjcgNy4yOTA1NyAxNC40ODc3TDguOTEzNDcgMTUuMDcyN0M5LjE1ODc3IDE1LjE2NzEgOS40Nzk1NyAxNS4wMzUgOS40Nzk1NyAxNC44Mjc0TDkuNDc5NDIgMTAuNTQzN1pNOS40Nzk0MiAxLjc0OTc2QzkuNDc5NDIgMS42NTU0MSA5LjM4NTA3IDEuNTYxMDYgOS4yNTI5NyAxLjUyMzMxTDcuNjY3OTcgMC45MzgzMTFDNy40MDM4MiAwLjgyNTA2MSA3LjEwMTg3IDAuOTU3MTYxIDcuMTAxODcgMS4xNDU4NlY1LjQ0ODQxQzcuMTA5MzEgNS41MDIxNyA3LjEzMDYyIDUuNTUzMDcgNy4xNjM3MSA1LjU5NjA5QzcuMTk2OCA1LjYzOTEyIDcuMjQwNTIgNS42NzI3OCA3LjI5MDU3IDUuNjkzNzZMOC45MTM0NyA2LjI3ODc2QzkuMTU4NzcgNi4zNzMxMSA5LjQ3OTU3IDYuMjQxMDEgOS40Nzk1NyA2LjAzMzQxTDkuNDc5NDIgMS43NDk3NlpNNS40NzkxNyAxLjQxOTc2QzUuNDc5MTcgMS4zMjUzNiA1LjM4NDgyIDEuMjMxMDEgNS4yNTI3MiAxLjE5MzMxTDMuNjY3NzIgMC42MDgzMTFDMy40MDM1NyAwLjQ5NTA2MSAzLjEwMTYyIDAuNjI3MTYxIDMuMTAxNjIgMC44MTU4NjFWMTQuNTkxNEMzLjEwOTA1IDE0LjY0NTIgMy4xMzAzNiAxNC42OTYxIDMuMTYzNDUgMTQuNzM5MUMzLjE5NjU0IDE0Ljc4MjEgMy4yNDAyNyAxNC44MTU3IDMuMjkwMzIgMTQuODM2N0w0LjkxMzIyIDE1LjQyMTdDNS4xNTg1MiAxNS41MTYxIDUuNDc5MzIgMTUuMzg0IDUuNDc5MzIgMTUuMTc2NEw1LjQ3OTE3IDEuNDE5NzZaIiBmaWxsPSIjMEU2NDc2Ii8+Cjwvc3ZnPgo=") center center / contain no-repeat',
-                          "background-blend-mode": "initial",
-                          "baseline-shift": "initial",
-                          "block-size": "initial",
-                          "border-block-end": "initial",
-                          "border-block-start": "initial",
-                          border: "none",
-                          "border-radius": "initial",
-                          "border-collapse": "initial",
-                          "border-inline-end": "initial",
-                          "border-inline-start": "initial",
-                          bottom: "initial",
-                          "box-shadow": "initial",
-                          "box-sizing": "initial",
-                          "break-after": "initial",
-                          "break-before": "initial",
-                          "break-inside": "initial",
-                          "buffered-rendering": "initial",
-                          "caption-side": "initial",
-                          "caret-color": "initial",
-                          clear: "initial",
-                          clip: "initial",
-                          "clip-path": "initial",
-                          "clip-rule": "initial",
-                          "color-interpolation": "initial",
-                          "color-interpolation-filters": "initial",
-                          "color-rendering": "initial",
-                          columns: "initial",
-                          "column-fill": "initial",
-                          gap: "initial",
-                          "column-rule": "initial",
-                          "column-span": "initial",
-                          contain: "initial",
-                          "contain-intrinsic-size": "initial",
-                          content: "initial",
-                          "counter-increment": "initial",
-                          "counter-reset": "initial",
-                          cursor: "initial",
-                          cx: "initial",
-                          cy: "initial",
-                          d: "initial",
-                          display: "inline",
-                          "dominant-baseline": "initial",
-                          "empty-cells": "initial",
-                          fill: "initial",
-                          "fill-opacity": "initial",
-                          "fill-rule": "initial",
-                          filter: "initial",
-                          flex: "initial",
-                          "flex-flow": "initial",
-                          float: "initial",
-                          "flood-color": "initial",
-                          "flood-opacity": "initial",
-                          grid: "initial",
-                          "grid-area": "initial",
-                          height: "16px",
-                          hyphens: "initial",
-                          "image-orientation": "initial",
-                          "image-rendering": "initial",
-                          "inline-size": "initial",
-                          isolation: "initial",
-                          left: "447px",
-                          "letter-spacing": "initial",
-                          "lighting-color": "initial",
-                          "line-break": "initial",
-                          "list-style": "initial",
-                          "margin-block-end": "initial",
-                          "margin-block-start": "initial",
-                          margin: "initial",
-                          "margin-inline-end": "initial",
-                          "margin-inline-start": "initial",
-                          marker: "initial",
-                          mask: "initial",
-                          "mask-type": "initial",
-                          "max-block-size": "initial",
-                          "max-height": "initial",
-                          "max-inline-size": "initial",
-                          "max-width": "initial",
-                          "min-block-size": "initial",
-                          "min-height": "initial",
-                          "min-inline-size": "initial",
-                          "min-width": "16px",
-                          "mix-blend-mode": "initial",
-                          "object-fit": "initial",
-                          "object-position": "initial",
-                          offset: "initial",
-                          opacity: "1",
-                          order: "initial",
-                          "origin-trial-test-property": "initial",
-                          orphans: "initial",
-                          outline: "initial",
-                          "outline-offset": "initial",
-                          "overflow-anchor": "initial",
-                          "overflow-wrap": "initial",
-                          overflow: "initial",
-                          "overscroll-behavior-block": "initial",
-                          "overscroll-behavior-inline": "initial",
-                          "overscroll-behavior": "initial",
-                          "padding-block-end": "initial",
-                          "padding-block-start": "initial",
-                          padding: "initial",
-                          "padding-inline-end": "initial",
-                          "padding-inline-start": "initial",
-                          "paint-order": "initial",
-                          perspective: "initial",
-                          "perspective-origin": "initial",
-                          "pointer-events": "initial",
-                          position: "absolute",
-                          quotes: "initial",
-                          r: "initial",
-                          resize: "initial",
-                          right: "initial",
-                          rx: "initial",
-                          ry: "initial",
-                          "scroll-behavior": "initial",
-                          "scroll-margin-block": "initial",
-                          "scroll-margin": "initial",
-                          "scroll-margin-inline": "initial",
-                          "scroll-padding-block": "initial",
-                          "scroll-padding": "initial",
-                          "scroll-padding-inline": "initial",
-                          "scroll-snap-align": "initial",
-                          "scroll-snap-stop": "initial",
-                          "scroll-snap-type": "initial",
-                          "shape-image-threshold": "initial",
-                          "shape-margin": "initial",
-                          "shape-outside": "initial",
-                          "shape-rendering": "initial",
-                          size: "initial",
-                          speak: "initial",
-                          "stop-color": "initial",
-                          "stop-opacity": "initial",
-                          stroke: "initial",
-                          "stroke-dasharray": "initial",
-                          "stroke-dashoffset": "initial",
-                          "stroke-linecap": "initial",
-                          "stroke-linejoin": "initial",
-                          "stroke-miterlimit": "initial",
-                          "stroke-opacity": "initial",
-                          "stroke-width": "initial",
-                          "tab-size": "initial",
-                          "table-layout": "initial",
-                          "text-align": "initial",
-                          "text-align-last": "initial",
-                          "text-anchor": "initial",
-                          "text-combine-upright": "initial",
-                          "text-decoration": "initial",
-                          "text-decoration-skip-ink": "initial",
-                          "text-indent": "initial",
-                          "text-overflow": "initial",
-                          "text-shadow": "initial",
-                          "text-size-adjust": "initial",
-                          "text-transform": "initial",
-                          "text-underline-position": "initial",
-                          top: "9px",
-                          "touch-action": "initial",
-                          transform: "initial",
-                          "transform-box": "initial",
-                          "transform-origin": "initial",
-                          "transform-style": "initial",
-                          "user-select": "initial",
-                          "vector-effect": "initial",
-                          "vertical-align": "initial",
-                          visibility: "visible",
-                          "-webkit-app-region": "initial",
-                          "-webkit-appearance": "initial",
-                          "border-spacing": "initial",
-                          "-webkit-border-image": "initial",
-                          "-webkit-box-align": "initial",
-                          "-webkit-box-decoration-break": "initial",
-                          "-webkit-box-direction": "initial",
-                          "-webkit-box-flex": "initial",
-                          "-webkit-box-ordinal-group": "initial",
-                          "-webkit-box-orient": "initial",
-                          "-webkit-box-pack": "initial",
-                          "-webkit-box-reflect": "initial",
-                          "-webkit-font-size-delta": "initial",
-                          "-webkit-highlight": "initial",
-                          "-webkit-hyphenate-character": "initial",
-                          "-webkit-line-break": "initial",
-                          "-webkit-line-clamp": "initial",
-                          "-webkit-mask-box-image": "initial",
-                          "-webkit-mask": "initial",
-                          "-webkit-mask-composite": "initial",
-                          "-webkit-perspective-origin-x": "initial",
-                          "-webkit-perspective-origin-y": "initial",
-                          "-webkit-print-color-adjust": "initial",
-                          "-webkit-rtl-ordering": "initial",
-                          "-webkit-ruby-position": "initial",
-                          "-webkit-tap-highlight-color": "initial",
-                          "-webkit-text-combine": "initial",
-                          "-webkit-text-decorations-in-effect": "initial",
-                          "-webkit-text-emphasis": "initial",
-                          "-webkit-text-emphasis-position": "initial",
-                          "-webkit-text-fill-color": "initial",
-                          "-webkit-text-security": "initial",
-                          "-webkit-text-stroke": "initial",
-                          "-webkit-transform-origin-x": "initial",
-                          "-webkit-transform-origin-y": "initial",
-                          "-webkit-transform-origin-z": "initial",
-                          "-webkit-user-drag": "initial",
-                          "-webkit-user-modify": "initial",
-                          "white-space": "initial",
-                          widows: "initial",
-                          width: "16px",
-                          "will-change": "initial",
-                          "word-break": "initial",
-                          "word-spacing": "initial",
-                          x: "initial",
-                          y: "initial",
-                          "z-index": "auto"
-                        }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "col-sm-2 control-label",
-                        attrs: { for: "inputEmail" }
-                      },
-                      [_vm._v("Email")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { attrs: { "data-children-count": "1" } }, [
-                      _c("input", {
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "email",
-                          id: "inputEmail",
-                          placeholder: "Email",
-                          "data-kwimpalastatus": "alive",
-                          "data-kwimpalaid": "1593026351318-2"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("span", {
-                        staticStyle: {
-                          animation: "initial",
-                          transition: "initial",
-                          color: "initial",
-                          "color-scheme": "initial",
-                          font: "initial",
-                          "font-feature-settings": "initial",
-                          "font-kerning": "initial",
-                          "font-optical-sizing": "initial",
-                          "font-variation-settings": "initial",
-                          "text-orientation": "initial",
-                          "text-rendering": "initial",
-                          "-webkit-font-smoothing": "initial",
-                          "-webkit-locale": "initial",
-                          "-webkit-text-orientation": "initial",
-                          "-webkit-writing-mode": "initial",
-                          "writing-mode": "initial",
-                          zoom: "initial",
-                          "place-content": "initial",
-                          "place-items": "initial",
-                          "place-self": "initial",
-                          "alignment-baseline": "initial",
-                          "backdrop-filter": "initial",
-                          "backface-visibility": "initial",
-                          background:
-                            'url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEzLjUgNS4yODgxMUMxMy41IDUuMTkzNzYgMTMuNDA1NyA1LjA5OTQxIDEzLjI3MzYgNS4wNjE2NkwxMS42ODg2IDQuNDc2NjZDMTEuNDI0NCA0LjM2MzQxIDExLjEyMjUgNC40OTU1MSAxMS4xMjI1IDQuNjg0MjZWMTEuNTgxN0MxMS4xMjk5IDExLjYzNTUgMTEuMTUxMiAxMS42ODY0IDExLjE4NDMgMTEuNzI5NEMxMS4yMTc0IDExLjc3MjQgMTEuMjYxMSAxMS44MDYxIDExLjMxMTIgMTEuODI3MUwxMi45MzQxIDEyLjQxMjFDMTMuMTc5NCAxMi41MDY0IDEzLjUwMDIgMTIuMzc0MyAxMy41MDAyIDEyLjE2NjdMMTMuNSA1LjI4ODExWk05LjQ3OTQyIDEwLjU0MzdDOS40Nzk0MiAxMC40NDk0IDkuMzg1MDcgMTAuMzU1IDkuMjUyOTcgMTAuMzE3M0w3LjY2Nzk3IDkuNzMyMjZDNy40MDM4MiA5LjYxOTAxIDcuMTAxODcgOS43NTExMSA3LjEwMTg3IDkuOTM5ODFWMTQuMjQyNEM3LjEwOTMxIDE0LjI5NjEgNy4xMzA2MiAxNC4zNDcgNy4xNjM3MSAxNC4zOUM3LjE5NjggMTQuNDMzMSA3LjI0MDUyIDE0LjQ2NjcgNy4yOTA1NyAxNC40ODc3TDguOTEzNDcgMTUuMDcyN0M5LjE1ODc3IDE1LjE2NzEgOS40Nzk1NyAxNS4wMzUgOS40Nzk1NyAxNC44Mjc0TDkuNDc5NDIgMTAuNTQzN1pNOS40Nzk0MiAxLjc0OTc2QzkuNDc5NDIgMS42NTU0MSA5LjM4NTA3IDEuNTYxMDYgOS4yNTI5NyAxLjUyMzMxTDcuNjY3OTcgMC45MzgzMTFDNy40MDM4MiAwLjgyNTA2MSA3LjEwMTg3IDAuOTU3MTYxIDcuMTAxODcgMS4xNDU4NlY1LjQ0ODQxQzcuMTA5MzEgNS41MDIxNyA3LjEzMDYyIDUuNTUzMDcgNy4xNjM3MSA1LjU5NjA5QzcuMTk2OCA1LjYzOTEyIDcuMjQwNTIgNS42NzI3OCA3LjI5MDU3IDUuNjkzNzZMOC45MTM0NyA2LjI3ODc2QzkuMTU4NzcgNi4zNzMxMSA5LjQ3OTU3IDYuMjQxMDEgOS40Nzk1NyA2LjAzMzQxTDkuNDc5NDIgMS43NDk3NlpNNS40NzkxNyAxLjQxOTc2QzUuNDc5MTcgMS4zMjUzNiA1LjM4NDgyIDEuMjMxMDEgNS4yNTI3MiAxLjE5MzMxTDMuNjY3NzIgMC42MDgzMTFDMy40MDM1NyAwLjQ5NTA2MSAzLjEwMTYyIDAuNjI3MTYxIDMuMTAxNjIgMC44MTU4NjFWMTQuNTkxNEMzLjEwOTA1IDE0LjY0NTIgMy4xMzAzNiAxNC42OTYxIDMuMTYzNDUgMTQuNzM5MUMzLjE5NjU0IDE0Ljc4MjEgMy4yNDAyNyAxNC44MTU3IDMuMjkwMzIgMTQuODM2N0w0LjkxMzIyIDE1LjQyMTdDNS4xNTg1MiAxNS41MTYxIDUuNDc5MzIgMTUuMzg0IDUuNDc5MzIgMTUuMTc2NEw1LjQ3OTE3IDEuNDE5NzZaIiBmaWxsPSIjMEU2NDc2Ii8+Cjwvc3ZnPgo=") center center / contain no-repeat',
-                          "background-blend-mode": "initial",
-                          "baseline-shift": "initial",
-                          "block-size": "initial",
-                          "border-block-end": "initial",
-                          "border-block-start": "initial",
-                          border: "none",
-                          "border-radius": "initial",
-                          "border-collapse": "initial",
-                          "border-inline-end": "initial",
-                          "border-inline-start": "initial",
-                          bottom: "initial",
-                          "box-shadow": "initial",
-                          "box-sizing": "initial",
-                          "break-after": "initial",
-                          "break-before": "initial",
-                          "break-inside": "initial",
-                          "buffered-rendering": "initial",
-                          "caption-side": "initial",
-                          "caret-color": "initial",
-                          clear: "initial",
-                          clip: "initial",
-                          "clip-path": "initial",
-                          "clip-rule": "initial",
-                          "color-interpolation": "initial",
-                          "color-interpolation-filters": "initial",
-                          "color-rendering": "initial",
-                          columns: "initial",
-                          "column-fill": "initial",
-                          gap: "initial",
-                          "column-rule": "initial",
-                          "column-span": "initial",
-                          contain: "initial",
-                          "contain-intrinsic-size": "initial",
-                          content: "initial",
-                          "counter-increment": "initial",
-                          "counter-reset": "initial",
-                          cursor: "initial",
-                          cx: "initial",
-                          cy: "initial",
-                          d: "initial",
-                          display: "inline",
-                          "dominant-baseline": "initial",
-                          "empty-cells": "initial",
-                          fill: "initial",
-                          "fill-opacity": "initial",
-                          "fill-rule": "initial",
-                          filter: "initial",
-                          flex: "initial",
-                          "flex-flow": "initial",
-                          float: "initial",
-                          "flood-color": "initial",
-                          "flood-opacity": "initial",
-                          grid: "initial",
-                          "grid-area": "initial",
-                          height: "16px",
-                          hyphens: "initial",
-                          "image-orientation": "initial",
-                          "image-rendering": "initial",
-                          "inline-size": "initial",
-                          isolation: "initial",
-                          left: "447px",
-                          "letter-spacing": "initial",
-                          "lighting-color": "initial",
-                          "line-break": "initial",
-                          "list-style": "initial",
-                          "margin-block-end": "initial",
-                          "margin-block-start": "initial",
-                          margin: "initial",
-                          "margin-inline-end": "initial",
-                          "margin-inline-start": "initial",
-                          marker: "initial",
-                          mask: "initial",
-                          "mask-type": "initial",
-                          "max-block-size": "initial",
-                          "max-height": "initial",
-                          "max-inline-size": "initial",
-                          "max-width": "initial",
-                          "min-block-size": "initial",
-                          "min-height": "initial",
-                          "min-inline-size": "initial",
-                          "min-width": "16px",
-                          "mix-blend-mode": "initial",
-                          "object-fit": "initial",
-                          "object-position": "initial",
-                          offset: "initial",
-                          opacity: "1",
-                          order: "initial",
-                          "origin-trial-test-property": "initial",
-                          orphans: "initial",
-                          outline: "initial",
-                          "outline-offset": "initial",
-                          "overflow-anchor": "initial",
-                          "overflow-wrap": "initial",
-                          overflow: "initial",
-                          "overscroll-behavior-block": "initial",
-                          "overscroll-behavior-inline": "initial",
-                          "overscroll-behavior": "initial",
-                          "padding-block-end": "initial",
-                          "padding-block-start": "initial",
-                          padding: "initial",
-                          "padding-inline-end": "initial",
-                          "padding-inline-start": "initial",
-                          "paint-order": "initial",
-                          perspective: "initial",
-                          "perspective-origin": "initial",
-                          "pointer-events": "initial",
-                          position: "absolute",
-                          quotes: "initial",
-                          r: "initial",
-                          resize: "initial",
-                          right: "initial",
-                          rx: "initial",
-                          ry: "initial",
-                          "scroll-behavior": "initial",
-                          "scroll-margin-block": "initial",
-                          "scroll-margin": "initial",
-                          "scroll-margin-inline": "initial",
-                          "scroll-padding-block": "initial",
-                          "scroll-padding": "initial",
-                          "scroll-padding-inline": "initial",
-                          "scroll-snap-align": "initial",
-                          "scroll-snap-stop": "initial",
-                          "scroll-snap-type": "initial",
-                          "shape-image-threshold": "initial",
-                          "shape-margin": "initial",
-                          "shape-outside": "initial",
-                          "shape-rendering": "initial",
-                          size: "initial",
-                          speak: "initial",
-                          "stop-color": "initial",
-                          "stop-opacity": "initial",
-                          stroke: "initial",
-                          "stroke-dasharray": "initial",
-                          "stroke-dashoffset": "initial",
-                          "stroke-linecap": "initial",
-                          "stroke-linejoin": "initial",
-                          "stroke-miterlimit": "initial",
-                          "stroke-opacity": "initial",
-                          "stroke-width": "initial",
-                          "tab-size": "initial",
-                          "table-layout": "initial",
-                          "text-align": "initial",
-                          "text-align-last": "initial",
-                          "text-anchor": "initial",
-                          "text-combine-upright": "initial",
-                          "text-decoration": "initial",
-                          "text-decoration-skip-ink": "initial",
-                          "text-indent": "initial",
-                          "text-overflow": "initial",
-                          "text-shadow": "initial",
-                          "text-size-adjust": "initial",
-                          "text-transform": "initial",
-                          "text-underline-position": "initial",
-                          top: "9px",
-                          "touch-action": "initial",
-                          transform: "initial",
-                          "transform-box": "initial",
-                          "transform-origin": "initial",
-                          "transform-style": "initial",
-                          "user-select": "initial",
-                          "vector-effect": "initial",
-                          "vertical-align": "initial",
-                          visibility: "visible",
-                          "-webkit-app-region": "initial",
-                          "-webkit-appearance": "initial",
-                          "border-spacing": "initial",
-                          "-webkit-border-image": "initial",
-                          "-webkit-box-align": "initial",
-                          "-webkit-box-decoration-break": "initial",
-                          "-webkit-box-direction": "initial",
-                          "-webkit-box-flex": "initial",
-                          "-webkit-box-ordinal-group": "initial",
-                          "-webkit-box-orient": "initial",
-                          "-webkit-box-pack": "initial",
-                          "-webkit-box-reflect": "initial",
-                          "-webkit-font-size-delta": "initial",
-                          "-webkit-highlight": "initial",
-                          "-webkit-hyphenate-character": "initial",
-                          "-webkit-line-break": "initial",
-                          "-webkit-line-clamp": "initial",
-                          "-webkit-mask-box-image": "initial",
-                          "-webkit-mask": "initial",
-                          "-webkit-mask-composite": "initial",
-                          "-webkit-perspective-origin-x": "initial",
-                          "-webkit-perspective-origin-y": "initial",
-                          "-webkit-print-color-adjust": "initial",
-                          "-webkit-rtl-ordering": "initial",
-                          "-webkit-ruby-position": "initial",
-                          "-webkit-tap-highlight-color": "initial",
-                          "-webkit-text-combine": "initial",
-                          "-webkit-text-decorations-in-effect": "initial",
-                          "-webkit-text-emphasis": "initial",
-                          "-webkit-text-emphasis-position": "initial",
-                          "-webkit-text-fill-color": "initial",
-                          "-webkit-text-security": "initial",
-                          "-webkit-text-stroke": "initial",
-                          "-webkit-transform-origin-x": "initial",
-                          "-webkit-transform-origin-y": "initial",
-                          "-webkit-transform-origin-z": "initial",
-                          "-webkit-user-drag": "initial",
-                          "-webkit-user-modify": "initial",
-                          "white-space": "initial",
-                          widows: "initial",
-                          width: "16px",
-                          "will-change": "initial",
-                          "word-break": "initial",
-                          "word-spacing": "initial",
-                          x: "initial",
-                          y: "initial",
-                          "z-index": "auto"
-                        }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "inputName" } }, [
-                      _vm._v("Name")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { attrs: { "data-children-count": "1" } }, [
-                      _c("input", {
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          id: "inputName",
-                          placeholder: "Name",
-                          "data-kwimpalastatus": "alive",
-                          "data-kwimpalaid": "1593026351318-3"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("span", {
-                        staticStyle: {
-                          animation: "initial",
-                          transition: "initial",
-                          color: "initial",
-                          "color-scheme": "initial",
-                          font: "initial",
-                          "font-feature-settings": "initial",
-                          "font-kerning": "initial",
-                          "font-optical-sizing": "initial",
-                          "font-variation-settings": "initial",
-                          "text-orientation": "initial",
-                          "text-rendering": "initial",
-                          "-webkit-font-smoothing": "initial",
-                          "-webkit-locale": "initial",
-                          "-webkit-text-orientation": "initial",
-                          "-webkit-writing-mode": "initial",
-                          "writing-mode": "initial",
-                          zoom: "initial",
-                          "place-content": "initial",
-                          "place-items": "initial",
-                          "place-self": "initial",
-                          "alignment-baseline": "initial",
-                          "backdrop-filter": "initial",
-                          "backface-visibility": "initial",
-                          background:
-                            'url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEzLjUgNS4yODgxMUMxMy41IDUuMTkzNzYgMTMuNDA1NyA1LjA5OTQxIDEzLjI3MzYgNS4wNjE2NkwxMS42ODg2IDQuNDc2NjZDMTEuNDI0NCA0LjM2MzQxIDExLjEyMjUgNC40OTU1MSAxMS4xMjI1IDQuNjg0MjZWMTEuNTgxN0MxMS4xMjk5IDExLjYzNTUgMTEuMTUxMiAxMS42ODY0IDExLjE4NDMgMTEuNzI5NEMxMS4yMTc0IDExLjc3MjQgMTEuMjYxMSAxMS44MDYxIDExLjMxMTIgMTEuODI3MUwxMi45MzQxIDEyLjQxMjFDMTMuMTc5NCAxMi41MDY0IDEzLjUwMDIgMTIuMzc0MyAxMy41MDAyIDEyLjE2NjdMMTMuNSA1LjI4ODExWk05LjQ3OTQyIDEwLjU0MzdDOS40Nzk0MiAxMC40NDk0IDkuMzg1MDcgMTAuMzU1IDkuMjUyOTcgMTAuMzE3M0w3LjY2Nzk3IDkuNzMyMjZDNy40MDM4MiA5LjYxOTAxIDcuMTAxODcgOS43NTExMSA3LjEwMTg3IDkuOTM5ODFWMTQuMjQyNEM3LjEwOTMxIDE0LjI5NjEgNy4xMzA2MiAxNC4zNDcgNy4xNjM3MSAxNC4zOUM3LjE5NjggMTQuNDMzMSA3LjI0MDUyIDE0LjQ2NjcgNy4yOTA1NyAxNC40ODc3TDguOTEzNDcgMTUuMDcyN0M5LjE1ODc3IDE1LjE2NzEgOS40Nzk1NyAxNS4wMzUgOS40Nzk1NyAxNC44Mjc0TDkuNDc5NDIgMTAuNTQzN1pNOS40Nzk0MiAxLjc0OTc2QzkuNDc5NDIgMS42NTU0MSA5LjM4NTA3IDEuNTYxMDYgOS4yNTI5NyAxLjUyMzMxTDcuNjY3OTcgMC45MzgzMTFDNy40MDM4MiAwLjgyNTA2MSA3LjEwMTg3IDAuOTU3MTYxIDcuMTAxODcgMS4xNDU4NlY1LjQ0ODQxQzcuMTA5MzEgNS41MDIxNyA3LjEzMDYyIDUuNTUzMDcgNy4xNjM3MSA1LjU5NjA5QzcuMTk2OCA1LjYzOTEyIDcuMjQwNTIgNS42NzI3OCA3LjI5MDU3IDUuNjkzNzZMOC45MTM0NyA2LjI3ODc2QzkuMTU4NzcgNi4zNzMxMSA5LjQ3OTU3IDYuMjQxMDEgOS40Nzk1NyA2LjAzMzQxTDkuNDc5NDIgMS43NDk3NlpNNS40NzkxNyAxLjQxOTc2QzUuNDc5MTcgMS4zMjUzNiA1LjM4NDgyIDEuMjMxMDEgNS4yNTI3MiAxLjE5MzMxTDMuNjY3NzIgMC42MDgzMTFDMy40MDM1NyAwLjQ5NTA2MSAzLjEwMTYyIDAuNjI3MTYxIDMuMTAxNjIgMC44MTU4NjFWMTQuNTkxNEMzLjEwOTA1IDE0LjY0NTIgMy4xMzAzNiAxNC42OTYxIDMuMTYzNDUgMTQuNzM5MUMzLjE5NjU0IDE0Ljc4MjEgMy4yNDAyNyAxNC44MTU3IDMuMjkwMzIgMTQuODM2N0w0LjkxMzIyIDE1LjQyMTdDNS4xNTg1MiAxNS41MTYxIDUuNDc5MzIgMTUuMzg0IDUuNDc5MzIgMTUuMTc2NEw1LjQ3OTE3IDEuNDE5NzZaIiBmaWxsPSIjMEU2NDc2Ii8+Cjwvc3ZnPgo=") center center / contain no-repeat',
-                          "background-blend-mode": "initial",
-                          "baseline-shift": "initial",
-                          "block-size": "initial",
-                          "border-block-end": "initial",
-                          "border-block-start": "initial",
-                          border: "none",
-                          "border-radius": "initial",
-                          "border-collapse": "initial",
-                          "border-inline-end": "initial",
-                          "border-inline-start": "initial",
-                          bottom: "initial",
-                          "box-shadow": "initial",
-                          "box-sizing": "initial",
-                          "break-after": "initial",
-                          "break-before": "initial",
-                          "break-inside": "initial",
-                          "buffered-rendering": "initial",
-                          "caption-side": "initial",
-                          "caret-color": "initial",
-                          clear: "initial",
-                          clip: "initial",
-                          "clip-path": "initial",
-                          "clip-rule": "initial",
-                          "color-interpolation": "initial",
-                          "color-interpolation-filters": "initial",
-                          "color-rendering": "initial",
-                          columns: "initial",
-                          "column-fill": "initial",
-                          gap: "initial",
-                          "column-rule": "initial",
-                          "column-span": "initial",
-                          contain: "initial",
-                          "contain-intrinsic-size": "initial",
-                          content: "initial",
-                          "counter-increment": "initial",
-                          "counter-reset": "initial",
-                          cursor: "initial",
-                          cx: "initial",
-                          cy: "initial",
-                          d: "initial",
-                          display: "inline",
-                          "dominant-baseline": "initial",
-                          "empty-cells": "initial",
-                          fill: "initial",
-                          "fill-opacity": "initial",
-                          "fill-rule": "initial",
-                          filter: "initial",
-                          flex: "initial",
-                          "flex-flow": "initial",
-                          float: "initial",
-                          "flood-color": "initial",
-                          "flood-opacity": "initial",
-                          grid: "initial",
-                          "grid-area": "initial",
-                          height: "16px",
-                          hyphens: "initial",
-                          "image-orientation": "initial",
-                          "image-rendering": "initial",
-                          "inline-size": "initial",
-                          isolation: "initial",
-                          left: "447px",
-                          "letter-spacing": "initial",
-                          "lighting-color": "initial",
-                          "line-break": "initial",
-                          "list-style": "initial",
-                          "margin-block-end": "initial",
-                          "margin-block-start": "initial",
-                          margin: "initial",
-                          "margin-inline-end": "initial",
-                          "margin-inline-start": "initial",
-                          marker: "initial",
-                          mask: "initial",
-                          "mask-type": "initial",
-                          "max-block-size": "initial",
-                          "max-height": "initial",
-                          "max-inline-size": "initial",
-                          "max-width": "initial",
-                          "min-block-size": "initial",
-                          "min-height": "initial",
-                          "min-inline-size": "initial",
-                          "min-width": "16px",
-                          "mix-blend-mode": "initial",
-                          "object-fit": "initial",
-                          "object-position": "initial",
-                          offset: "initial",
-                          opacity: "1",
-                          order: "initial",
-                          "origin-trial-test-property": "initial",
-                          orphans: "initial",
-                          outline: "initial",
-                          "outline-offset": "initial",
-                          "overflow-anchor": "initial",
-                          "overflow-wrap": "initial",
-                          overflow: "initial",
-                          "overscroll-behavior-block": "initial",
-                          "overscroll-behavior-inline": "initial",
-                          "overscroll-behavior": "initial",
-                          "padding-block-end": "initial",
-                          "padding-block-start": "initial",
-                          padding: "initial",
-                          "padding-inline-end": "initial",
-                          "padding-inline-start": "initial",
-                          "paint-order": "initial",
-                          perspective: "initial",
-                          "perspective-origin": "initial",
-                          "pointer-events": "initial",
-                          position: "absolute",
-                          quotes: "initial",
-                          r: "initial",
-                          resize: "initial",
-                          right: "initial",
-                          rx: "initial",
-                          ry: "initial",
-                          "scroll-behavior": "initial",
-                          "scroll-margin-block": "initial",
-                          "scroll-margin": "initial",
-                          "scroll-margin-inline": "initial",
-                          "scroll-padding-block": "initial",
-                          "scroll-padding": "initial",
-                          "scroll-padding-inline": "initial",
-                          "scroll-snap-align": "initial",
-                          "scroll-snap-stop": "initial",
-                          "scroll-snap-type": "initial",
-                          "shape-image-threshold": "initial",
-                          "shape-margin": "initial",
-                          "shape-outside": "initial",
-                          "shape-rendering": "initial",
-                          size: "initial",
-                          speak: "initial",
-                          "stop-color": "initial",
-                          "stop-opacity": "initial",
-                          stroke: "initial",
-                          "stroke-dasharray": "initial",
-                          "stroke-dashoffset": "initial",
-                          "stroke-linecap": "initial",
-                          "stroke-linejoin": "initial",
-                          "stroke-miterlimit": "initial",
-                          "stroke-opacity": "initial",
-                          "stroke-width": "initial",
-                          "tab-size": "initial",
-                          "table-layout": "initial",
-                          "text-align": "initial",
-                          "text-align-last": "initial",
-                          "text-anchor": "initial",
-                          "text-combine-upright": "initial",
-                          "text-decoration": "initial",
-                          "text-decoration-skip-ink": "initial",
-                          "text-indent": "initial",
-                          "text-overflow": "initial",
-                          "text-shadow": "initial",
-                          "text-size-adjust": "initial",
-                          "text-transform": "initial",
-                          "text-underline-position": "initial",
-                          top: "9px",
-                          "touch-action": "initial",
-                          transform: "initial",
-                          "transform-box": "initial",
-                          "transform-origin": "initial",
-                          "transform-style": "initial",
-                          "user-select": "initial",
-                          "vector-effect": "initial",
-                          "vertical-align": "initial",
-                          visibility: "visible",
-                          "-webkit-app-region": "initial",
-                          "-webkit-appearance": "initial",
-                          "border-spacing": "initial",
-                          "-webkit-border-image": "initial",
-                          "-webkit-box-align": "initial",
-                          "-webkit-box-decoration-break": "initial",
-                          "-webkit-box-direction": "initial",
-                          "-webkit-box-flex": "initial",
-                          "-webkit-box-ordinal-group": "initial",
-                          "-webkit-box-orient": "initial",
-                          "-webkit-box-pack": "initial",
-                          "-webkit-box-reflect": "initial",
-                          "-webkit-font-size-delta": "initial",
-                          "-webkit-highlight": "initial",
-                          "-webkit-hyphenate-character": "initial",
-                          "-webkit-line-break": "initial",
-                          "-webkit-line-clamp": "initial",
-                          "-webkit-mask-box-image": "initial",
-                          "-webkit-mask": "initial",
-                          "-webkit-mask-composite": "initial",
-                          "-webkit-perspective-origin-x": "initial",
-                          "-webkit-perspective-origin-y": "initial",
-                          "-webkit-print-color-adjust": "initial",
-                          "-webkit-rtl-ordering": "initial",
-                          "-webkit-ruby-position": "initial",
-                          "-webkit-tap-highlight-color": "initial",
-                          "-webkit-text-combine": "initial",
-                          "-webkit-text-decorations-in-effect": "initial",
-                          "-webkit-text-emphasis": "initial",
-                          "-webkit-text-emphasis-position": "initial",
-                          "-webkit-text-fill-color": "initial",
-                          "-webkit-text-security": "initial",
-                          "-webkit-text-stroke": "initial",
-                          "-webkit-transform-origin-x": "initial",
-                          "-webkit-transform-origin-y": "initial",
-                          "-webkit-transform-origin-z": "initial",
-                          "-webkit-user-drag": "initial",
-                          "-webkit-user-modify": "initial",
-                          "white-space": "initial",
-                          widows: "initial",
-                          width: "16px",
-                          "will-change": "initial",
-                          "word-break": "initial",
-                          "word-spacing": "initial",
-                          x: "initial",
-                          y: "initial",
-                          "z-index": "auto"
-                        }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "inputExperience" } }, [
-                      _vm._v("Experience")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { attrs: { "data-children-count": "1" } }, [
-                      _c("textarea", {
-                        staticClass: "form-control",
-                        attrs: {
-                          id: "inputExperience",
-                          placeholder: "Experience"
-                        }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "inputSkills" } }, [
-                      _vm._v("Skills")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { attrs: { "data-children-count": "1" } }, [
-                      _c("input", {
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          id: "inputSkills",
-                          placeholder: "Skills"
-                        }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("div", [
-                      _c("div", { staticClass: "checkbox" }, [
-                        _c("label", { attrs: { "data-children-count": "1" } }, [
-                          _c("input", { attrs: { type: "checkbox" } }),
-                          _vm._v(" I agree to the\n                    "),
-                          _c("a", { attrs: { href: "#" } }, [
-                            _vm._v("terms and conditions")
-                          ])
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("div", [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-danger",
-                          attrs: { type: "submit" }
-                        },
-                        [_vm._v("Submit")]
-                      )
-                    ])
-                  ])
-                ])
-              ]
-            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-4" }, [
+          _c("div", { staticClass: "description-block" }, [
+            _c("h5", { staticClass: "description-header" }, [_vm._v("35")]),
+            _vm._v(" "),
+            _c("span", { staticClass: "description-text" }, [
+              _vm._v("PRODUCTS")
+            ])
           ])
         ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c(
+        "label",
+        { staticClass: "control-label", attrs: { for: "inputEmail" } },
+        [_vm._v("Email")]
+      ),
+      _vm._v(" "),
+      _c("div", { attrs: { "data-children-count": "1" } }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            type: "email",
+            id: "inputEmail",
+            placeholder: "Email",
+            "data-kwimpalastatus": "alive",
+            "data-kwimpalaid": "1593026351318-2"
+          }
+        }),
+        _vm._v(" "),
+        _c("span", {
+          staticStyle: {
+            animation: "initial",
+            transition: "initial",
+            color: "initial",
+            "color-scheme": "initial",
+            font: "initial",
+            "font-feature-settings": "initial",
+            "font-kerning": "initial",
+            "font-optical-sizing": "initial",
+            "font-variation-settings": "initial",
+            "text-orientation": "initial",
+            "text-rendering": "initial",
+            "-webkit-font-smoothing": "initial",
+            "-webkit-locale": "initial",
+            "-webkit-text-orientation": "initial",
+            "-webkit-writing-mode": "initial",
+            "writing-mode": "initial",
+            zoom: "initial",
+            "place-content": "initial",
+            "place-items": "initial",
+            "place-self": "initial",
+            "alignment-baseline": "initial",
+            "backdrop-filter": "initial",
+            "backface-visibility": "initial",
+            background:
+              'url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEzLjUgNS4yODgxMUMxMy41IDUuMTkzNzYgMTMuNDA1NyA1LjA5OTQxIDEzLjI3MzYgNS4wNjE2NkwxMS42ODg2IDQuNDc2NjZDMTEuNDI0NCA0LjM2MzQxIDExLjEyMjUgNC40OTU1MSAxMS4xMjI1IDQuNjg0MjZWMTEuNTgxN0MxMS4xMjk5IDExLjYzNTUgMTEuMTUxMiAxMS42ODY0IDExLjE4NDMgMTEuNzI5NEMxMS4yMTc0IDExLjc3MjQgMTEuMjYxMSAxMS44MDYxIDExLjMxMTIgMTEuODI3MUwxMi45MzQxIDEyLjQxMjFDMTMuMTc5NCAxMi41MDY0IDEzLjUwMDIgMTIuMzc0MyAxMy41MDAyIDEyLjE2NjdMMTMuNSA1LjI4ODExWk05LjQ3OTQyIDEwLjU0MzdDOS40Nzk0MiAxMC40NDk0IDkuMzg1MDcgMTAuMzU1IDkuMjUyOTcgMTAuMzE3M0w3LjY2Nzk3IDkuNzMyMjZDNy40MDM4MiA5LjYxOTAxIDcuMTAxODcgOS43NTExMSA3LjEwMTg3IDkuOTM5ODFWMTQuMjQyNEM3LjEwOTMxIDE0LjI5NjEgNy4xMzA2MiAxNC4zNDcgNy4xNjM3MSAxNC4zOUM3LjE5NjggMTQuNDMzMSA3LjI0MDUyIDE0LjQ2NjcgNy4yOTA1NyAxNC40ODc3TDguOTEzNDcgMTUuMDcyN0M5LjE1ODc3IDE1LjE2NzEgOS40Nzk1NyAxNS4wMzUgOS40Nzk1NyAxNC44Mjc0TDkuNDc5NDIgMTAuNTQzN1pNOS40Nzk0MiAxLjc0OTc2QzkuNDc5NDIgMS42NTU0MSA5LjM4NTA3IDEuNTYxMDYgOS4yNTI5NyAxLjUyMzMxTDcuNjY3OTcgMC45MzgzMTFDNy40MDM4MiAwLjgyNTA2MSA3LjEwMTg3IDAuOTU3MTYxIDcuMTAxODcgMS4xNDU4NlY1LjQ0ODQxQzcuMTA5MzEgNS41MDIxNyA3LjEzMDYyIDUuNTUzMDcgNy4xNjM3MSA1LjU5NjA5QzcuMTk2OCA1LjYzOTEyIDcuMjQwNTIgNS42NzI3OCA3LjI5MDU3IDUuNjkzNzZMOC45MTM0NyA2LjI3ODc2QzkuMTU4NzcgNi4zNzMxMSA5LjQ3OTU3IDYuMjQxMDEgOS40Nzk1NyA2LjAzMzQxTDkuNDc5NDIgMS43NDk3NlpNNS40NzkxNyAxLjQxOTc2QzUuNDc5MTcgMS4zMjUzNiA1LjM4NDgyIDEuMjMxMDEgNS4yNTI3MiAxLjE5MzMxTDMuNjY3NzIgMC42MDgzMTFDMy40MDM1NyAwLjQ5NTA2MSAzLjEwMTYyIDAuNjI3MTYxIDMuMTAxNjIgMC44MTU4NjFWMTQuNTkxNEMzLjEwOTA1IDE0LjY0NTIgMy4xMzAzNiAxNC42OTYxIDMuMTYzNDUgMTQuNzM5MUMzLjE5NjU0IDE0Ljc4MjEgMy4yNDAyNyAxNC44MTU3IDMuMjkwMzIgMTQuODM2N0w0LjkxMzIyIDE1LjQyMTdDNS4xNTg1MiAxNS41MTYxIDUuNDc5MzIgMTUuMzg0IDUuNDc5MzIgMTUuMTc2NEw1LjQ3OTE3IDEuNDE5NzZaIiBmaWxsPSIjMEU2NDc2Ii8+Cjwvc3ZnPgo=") center center / contain no-repeat',
+            "background-blend-mode": "initial",
+            "baseline-shift": "initial",
+            "block-size": "initial",
+            "border-block-end": "initial",
+            "border-block-start": "initial",
+            border: "none",
+            "border-radius": "initial",
+            "border-collapse": "initial",
+            "border-inline-end": "initial",
+            "border-inline-start": "initial",
+            bottom: "initial",
+            "box-shadow": "initial",
+            "box-sizing": "initial",
+            "break-after": "initial",
+            "break-before": "initial",
+            "break-inside": "initial",
+            "buffered-rendering": "initial",
+            "caption-side": "initial",
+            "caret-color": "initial",
+            clear: "initial",
+            clip: "initial",
+            "clip-path": "initial",
+            "clip-rule": "initial",
+            "color-interpolation": "initial",
+            "color-interpolation-filters": "initial",
+            "color-rendering": "initial",
+            columns: "initial",
+            "column-fill": "initial",
+            gap: "initial",
+            "column-rule": "initial",
+            "column-span": "initial",
+            contain: "initial",
+            "contain-intrinsic-size": "initial",
+            content: "initial",
+            "counter-increment": "initial",
+            "counter-reset": "initial",
+            cursor: "initial",
+            cx: "initial",
+            cy: "initial",
+            d: "initial",
+            display: "inline",
+            "dominant-baseline": "initial",
+            "empty-cells": "initial",
+            fill: "initial",
+            "fill-opacity": "initial",
+            "fill-rule": "initial",
+            filter: "initial",
+            flex: "initial",
+            "flex-flow": "initial",
+            float: "initial",
+            "flood-color": "initial",
+            "flood-opacity": "initial",
+            grid: "initial",
+            "grid-area": "initial",
+            height: "16px",
+            hyphens: "initial",
+            "image-orientation": "initial",
+            "image-rendering": "initial",
+            "inline-size": "initial",
+            isolation: "initial",
+            left: "447px",
+            "letter-spacing": "initial",
+            "lighting-color": "initial",
+            "line-break": "initial",
+            "list-style": "initial",
+            "margin-block-end": "initial",
+            "margin-block-start": "initial",
+            margin: "initial",
+            "margin-inline-end": "initial",
+            "margin-inline-start": "initial",
+            marker: "initial",
+            mask: "initial",
+            "mask-type": "initial",
+            "max-block-size": "initial",
+            "max-height": "initial",
+            "max-inline-size": "initial",
+            "max-width": "initial",
+            "min-block-size": "initial",
+            "min-height": "initial",
+            "min-inline-size": "initial",
+            "min-width": "16px",
+            "mix-blend-mode": "initial",
+            "object-fit": "initial",
+            "object-position": "initial",
+            offset: "initial",
+            opacity: "1",
+            order: "initial",
+            "origin-trial-test-property": "initial",
+            orphans: "initial",
+            outline: "initial",
+            "outline-offset": "initial",
+            "overflow-anchor": "initial",
+            "overflow-wrap": "initial",
+            overflow: "initial",
+            "overscroll-behavior-block": "initial",
+            "overscroll-behavior-inline": "initial",
+            "overscroll-behavior": "initial",
+            "padding-block-end": "initial",
+            "padding-block-start": "initial",
+            padding: "initial",
+            "padding-inline-end": "initial",
+            "padding-inline-start": "initial",
+            "paint-order": "initial",
+            perspective: "initial",
+            "perspective-origin": "initial",
+            "pointer-events": "initial",
+            position: "absolute",
+            quotes: "initial",
+            r: "initial",
+            resize: "initial",
+            right: "initial",
+            rx: "initial",
+            ry: "initial",
+            "scroll-behavior": "initial",
+            "scroll-margin-block": "initial",
+            "scroll-margin": "initial",
+            "scroll-margin-inline": "initial",
+            "scroll-padding-block": "initial",
+            "scroll-padding": "initial",
+            "scroll-padding-inline": "initial",
+            "scroll-snap-align": "initial",
+            "scroll-snap-stop": "initial",
+            "scroll-snap-type": "initial",
+            "shape-image-threshold": "initial",
+            "shape-margin": "initial",
+            "shape-outside": "initial",
+            "shape-rendering": "initial",
+            size: "initial",
+            speak: "initial",
+            "stop-color": "initial",
+            "stop-opacity": "initial",
+            stroke: "initial",
+            "stroke-dasharray": "initial",
+            "stroke-dashoffset": "initial",
+            "stroke-linecap": "initial",
+            "stroke-linejoin": "initial",
+            "stroke-miterlimit": "initial",
+            "stroke-opacity": "initial",
+            "stroke-width": "initial",
+            "tab-size": "initial",
+            "table-layout": "initial",
+            "text-align": "initial",
+            "text-align-last": "initial",
+            "text-anchor": "initial",
+            "text-combine-upright": "initial",
+            "text-decoration": "initial",
+            "text-decoration-skip-ink": "initial",
+            "text-indent": "initial",
+            "text-overflow": "initial",
+            "text-shadow": "initial",
+            "text-size-adjust": "initial",
+            "text-transform": "initial",
+            "text-underline-position": "initial",
+            top: "9px",
+            "touch-action": "initial",
+            transform: "initial",
+            "transform-box": "initial",
+            "transform-origin": "initial",
+            "transform-style": "initial",
+            "user-select": "initial",
+            "vector-effect": "initial",
+            "vertical-align": "initial",
+            visibility: "visible",
+            "-webkit-app-region": "initial",
+            "-webkit-appearance": "initial",
+            "border-spacing": "initial",
+            "-webkit-border-image": "initial",
+            "-webkit-box-align": "initial",
+            "-webkit-box-decoration-break": "initial",
+            "-webkit-box-direction": "initial",
+            "-webkit-box-flex": "initial",
+            "-webkit-box-ordinal-group": "initial",
+            "-webkit-box-orient": "initial",
+            "-webkit-box-pack": "initial",
+            "-webkit-box-reflect": "initial",
+            "-webkit-font-size-delta": "initial",
+            "-webkit-highlight": "initial",
+            "-webkit-hyphenate-character": "initial",
+            "-webkit-line-break": "initial",
+            "-webkit-line-clamp": "initial",
+            "-webkit-mask-box-image": "initial",
+            "-webkit-mask": "initial",
+            "-webkit-mask-composite": "initial",
+            "-webkit-perspective-origin-x": "initial",
+            "-webkit-perspective-origin-y": "initial",
+            "-webkit-print-color-adjust": "initial",
+            "-webkit-rtl-ordering": "initial",
+            "-webkit-ruby-position": "initial",
+            "-webkit-tap-highlight-color": "initial",
+            "-webkit-text-combine": "initial",
+            "-webkit-text-decorations-in-effect": "initial",
+            "-webkit-text-emphasis": "initial",
+            "-webkit-text-emphasis-position": "initial",
+            "-webkit-text-fill-color": "initial",
+            "-webkit-text-security": "initial",
+            "-webkit-text-stroke": "initial",
+            "-webkit-transform-origin-x": "initial",
+            "-webkit-transform-origin-y": "initial",
+            "-webkit-transform-origin-z": "initial",
+            "-webkit-user-drag": "initial",
+            "-webkit-user-modify": "initial",
+            "white-space": "initial",
+            widows: "initial",
+            width: "16px",
+            "will-change": "initial",
+            "word-break": "initial",
+            "word-spacing": "initial",
+            x: "initial",
+            y: "initial",
+            "z-index": "auto"
+          }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "inputExperience" } }, [
+        _vm._v("Experience")
+      ]),
+      _vm._v(" "),
+      _c("div", { attrs: { "data-children-count": "1" } }, [
+        _c("textarea", {
+          staticClass: "form-control",
+          attrs: { id: "inputExperience", placeholder: "Experience" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "inputSkills" } }, [_vm._v("Skills")]),
+      _vm._v(" "),
+      _c("div", { attrs: { "data-children-count": "1" } }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "text", id: "inputSkills", placeholder: "Skills" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("div", [
+        _c("div", { staticClass: "checkbox" }, [
+          _c("label", { attrs: { "data-children-count": "1" } }, [
+            _c("input", { attrs: { type: "checkbox" } }),
+            _vm._v(" I agree to the\n                    "),
+            _c("a", { attrs: { href: "#" } }, [_vm._v("terms and conditions")])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("div", [
+        _c(
+          "button",
+          { staticClass: "btn btn-danger", attrs: { type: "submit" } },
+          [_vm._v("Submit")]
+        )
       ])
     ])
   }
@@ -82690,7 +82459,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Dashboard_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/Dashboard.vue */ "./resources/js/components/Dashboard.vue");
 /* harmony import */ var _components_Profile_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/Profile.vue */ "./resources/js/components/Profile.vue");
 /* harmony import */ var _components_Users_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/Users.vue */ "./resources/js/components/Users.vue");
-/* harmony import */ var _components_Developer_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/Developer.vue */ "./resources/js/components/Developer.vue");
+/* harmony import */ var _components_Developer_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/Developer.vue */ "./resources/js/components/Developer.vue");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -82721,7 +82490,7 @@ var Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.mixin({
 });
 window.Toast = Toast;
 
-window.form = vform__WEBPACK_IMPORTED_MODULE_0__["Form"];
+window.Form = vform__WEBPACK_IMPORTED_MODULE_0__["Form"];
 vue__WEBPACK_IMPORTED_MODULE_4___default.a.component(vform__WEBPACK_IMPORTED_MODULE_0__["HasError"].name, vform__WEBPACK_IMPORTED_MODULE_0__["HasError"]);
 vue__WEBPACK_IMPORTED_MODULE_4___default.a.component(vform__WEBPACK_IMPORTED_MODULE_0__["AlertError"].name, vform__WEBPACK_IMPORTED_MODULE_0__["AlertError"]);
 
@@ -82736,7 +82505,7 @@ var routes = [{
   component: _components_Dashboard_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
 }, {
   path: '/developer',
-  component: _components_Developer_vue__WEBPACK_IMPORTED_MODULE_10__["default"]
+  component: _components_Developer_vue__WEBPACK_IMPORTED_MODULE_9__["default"]
 }, {
   path: '/profile',
   component: _components_Profile_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
