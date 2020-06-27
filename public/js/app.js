@@ -64976,17 +64976,22 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("div", { staticClass: "box box-widget widget-user" }, [
-              _c("div", { staticClass: "widget-user-header" }, [
-                _c("h3", { staticClass: "widget-user-username" }, [
-                  _vm._v(_vm._s(_vm.form.name))
-                ]),
-                _vm._v(" "),
-                _c("img", { attrs: { src: _vm.form.photo, alt: "" } }),
-                _vm._v(" "),
-                _c("h5", { staticClass: "widget-user-desc" }, [
-                  _vm._v("Web Designer")
-                ])
-              ]),
+              _c(
+                "div",
+                {
+                  staticClass: "widget-user-header",
+                  style: { "background-image": "url(" + _vm.form.photo + ")" }
+                },
+                [
+                  _c("h3", { staticClass: "widget-user-username" }, [
+                    _vm._v(_vm._s(_vm.form.name))
+                  ]),
+                  _vm._v(" "),
+                  _c("h5", { staticClass: "widget-user-desc" }, [
+                    _vm._v("Web Designer")
+                  ])
+                ]
+              ),
               _vm._v(" "),
               _c("div", { staticClass: "widget-user-image" }),
               _vm._v(" "),

@@ -8,9 +8,9 @@
           <div class="card-body">
             <div class="box box-widget widget-user">
               <!-- Add the bg color to the header using any of the bg-* classes -->
-              <div class="widget-user-header">
+              <div class="widget-user-header" :style="{'background-image': `url(${form.photo})`}">
                 <h3 class="widget-user-username">{{form.name}}</h3>
-                <img :src="form.photo" alt />
+                <!-- <img class="responsive-img" :src="form.photo" alt /> -->
                 <h5 class="widget-user-desc">Web Designer</h5>
               </div>
               <div class="widget-user-image">
