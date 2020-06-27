@@ -2352,7 +2352,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       users: {},
-      form: new form({
+      form: new Form({
         id: "",
         name: "",
         email: "",

@@ -156,7 +156,7 @@ export default {
   data() {
     return {
       users: {},
-      form: new form({
+      form: new Form({
         id: "",
         name: "",
         email: "",
