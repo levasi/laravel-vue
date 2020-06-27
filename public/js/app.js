@@ -2156,13 +2156,23 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var file = event.target.files[0];
+      console.log(file);
       var reader = new FileReader();
 
-      reader.onloadend = function (file) {
-        _this.form.photo = reader.result;
-      };
+      if (file["size"] < 21117) {
+        reader.onloadend = function (file) {
+          _this.form.photo = reader.result;
+        };
 
-      reader.readAsDataURL(file);
+        reader.readAsDataURL(file);
+      } else {
+        // error
+        Toast.fire({
+          icon: "error",
+          title: "File too big",
+          text: "You are uploading a file that is more than 2 mb"
+        });
+      }
     },
     updateProfile: function updateProfile() {
       this.form.put("api/profile").then(function (response) {

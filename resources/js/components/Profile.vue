@@ -148,11 +148,22 @@ export default {
   methods: {
     uploadFile(event) {
       const file = event.target.files[0];
+      console.log(file);
+
       const reader = new FileReader();
-      reader.onloadend = file => {
-        this.form.photo = reader.result;
-      };
-      reader.readAsDataURL(file);
+      if (file["size"] < 21117) {
+        reader.onloadend = file => {
+          this.form.photo = reader.result;
+        };
+        reader.readAsDataURL(file);
+      } else {
+        // error
+        Toast.fire({
+          icon: "error",
+          title: "File too big",
+          text: "You are uploading a file that is more than 2 mb"
+        });
+      }
     },
     updateProfile() {
       this.form
