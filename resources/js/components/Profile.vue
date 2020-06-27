@@ -8,9 +8,8 @@
           <div class="card-body">
             <div class="box box-widget widget-user">
               <!-- Add the bg color to the header using any of the bg-* classes -->
-              <div class="widget-user-header" :style="{'background-image': `url(${form.photo})`}">
+              <div class="widget-user-header" :style="{'background-image': profileImage}">
                 <h3 class="widget-user-username">{{form.name}}</h3>
-                <!-- <img class="responsive-img" :src="form.photo" alt /> -->
                 <h5 class="widget-user-desc">Web Designer</h5>
               </div>
               <div class="widget-user-image">
@@ -160,15 +159,23 @@ export default {
       photo: ""
     };
   },
+  computed: {
+    profileImage() {
+      if (this.photo) {
+        return `url(${this.photo})`;
+      } else {
+        return `url(img/profile/${this.form.photo})`;
+      }
+    }
+  },
   methods: {
     uploadFile(event) {
       const file = event.target.files[0];
-      console.log(file);
-
       const reader = new FileReader();
-      if (file["size"] < 21117) {
+      if (file["size"] < 2111775) {
         reader.onloadend = file => {
           this.form.photo = reader.result;
+          this.photo = reader.result;
         };
         reader.readAsDataURL(file);
       } else {

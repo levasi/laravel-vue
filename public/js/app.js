@@ -2150,7 +2150,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2166,17 +2165,26 @@ __webpack_require__.r(__webpack_exports__);
       photo: ""
     };
   },
+  computed: {
+    profileImage: function profileImage() {
+      if (this.photo) {
+        return "url(".concat(this.photo, ")");
+      } else {
+        return "url(img/profile/".concat(this.form.photo, ")");
+      }
+    }
+  },
   methods: {
     uploadFile: function uploadFile(event) {
       var _this = this;
 
       var file = event.target.files[0];
-      console.log(file);
       var reader = new FileReader();
 
-      if (file["size"] < 21117) {
+      if (file["size"] < 2111775) {
         reader.onloadend = function (file) {
           _this.form.photo = reader.result;
+          _this.photo = reader.result;
         };
 
         reader.readAsDataURL(file);
@@ -64980,7 +64988,7 @@ var render = function() {
                 "div",
                 {
                   staticClass: "widget-user-header",
-                  style: { "background-image": "url(" + _vm.form.photo + ")" }
+                  style: { "background-image": _vm.profileImage }
                 },
                 [
                   _c("h3", { staticClass: "widget-user-username" }, [
