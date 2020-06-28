@@ -33,6 +33,9 @@ import moment from 'moment'
 window.Form = Form
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
+
+
+
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
@@ -61,6 +64,10 @@ Vue.filter('upTxt', (value) => {
 Vue.filter('momentDate', (value) => {
   return moment(value).format("MMM Do YY");
 })
+
+import Gate from './Gate'
+Vue.prototype.$gate = new Gate(window.user)
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

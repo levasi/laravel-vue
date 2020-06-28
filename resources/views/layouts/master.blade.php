@@ -140,6 +140,7 @@
                 </p>
               </router-link>
             </li>
+            @can('isAdmin')
             <li class="nav-item has-treeview">
               <router-link to="/users" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
@@ -148,7 +149,6 @@
                 </p>
               </router-link>
             </li>
-            @can('isAdmin')
             <li class="nav-item">
               <router-link to="/developer" class="nav-link">
                 <i class="nav-icon fas fa-cogs"></i>
@@ -200,6 +200,11 @@
       <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
     </footer>
   </div>
+  @auth
+  <script>
+    window.user = @json(auth()->user())
+  </script>
+  @endauth
   <script src="/js/app.js"></script>
 </body>
 
