@@ -48189,3 +48189,7 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
 }
 
+.cl-gray {
+  color: #c2c7d0;
+}
+

@@ -147,6 +147,7 @@
         </div>
       </div>
     </div>
+    <not-found v-if="!$gate.isAdmin()"></not-found>
   </div>
 </template>
 

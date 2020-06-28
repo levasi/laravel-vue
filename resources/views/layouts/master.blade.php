@@ -127,6 +127,7 @@
           </div>
           <div class="info">
             <a href="#" class="d-block"> {{ Auth::user()->name }}</a>
+            <span class="cl-gray">{{ Auth::user()->type }}</span>
           </div>
         </div>
 
