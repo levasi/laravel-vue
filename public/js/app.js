@@ -65568,11 +65568,9 @@ var render = function() {
                                     _vm._v("Admin")
                                   ]),
                                   _vm._v(" "),
-                                  _c(
-                                    "option",
-                                    { attrs: { value: "standard" } },
-                                    [_vm._v("Standard")]
-                                  ),
+                                  _c("option", { attrs: { value: "user" } }, [
+                                    _vm._v("User")
+                                  ]),
                                   _vm._v(" "),
                                   _c("option", { attrs: { value: "author" } }, [
                                     _vm._v("Author")

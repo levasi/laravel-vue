@@ -84,7 +84,7 @@
                         >
                           <option value>Select user role</option>
                           <option value="admin">Admin</option>
-                          <option value="standard">Standard</option>
+                          <option value="user">User</option>
                           <option value="author">Author</option>
                         </select>
                         <has-error :form="form" field="type"></has-error>
