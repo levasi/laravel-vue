@@ -66336,7 +66336,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("h5", { staticClass: "widget-user-desc" }, [
-                    _vm._v("Web Designer")
+                    _vm._v(_vm._s(_vm.form.type))
                   ])
                 ]
               ),
@@ -83578,7 +83578,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Profile_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/Profile.vue */ "./resources/js/components/Profile.vue");
 /* harmony import */ var _components_Users_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/Users.vue */ "./resources/js/components/Users.vue");
 /* harmony import */ var _components_Developer_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/Developer.vue */ "./resources/js/components/Developer.vue");
-/* harmony import */ var _Gate__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Gate */ "./resources/js/Gate.js");
+/* harmony import */ var _components_NotFound_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/NotFound.vue */ "./resources/js/components/NotFound.vue");
+/* harmony import */ var _Gate__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Gate */ "./resources/js/Gate.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -83619,6 +83620,7 @@ vue__WEBPACK_IMPORTED_MODULE_4___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 
 
 
+
 var routes = [{
   path: '/dashboard',
   component: _components_Dashboard_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
@@ -83631,6 +83633,9 @@ var routes = [{
 }, {
   path: '/users',
   component: _components_Users_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
+}, {
+  path: '*',
+  component: _components_NotFound_vue__WEBPACK_IMPORTED_MODULE_10__["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_5__["default"]({
   mode: 'history',
@@ -83643,7 +83648,7 @@ vue__WEBPACK_IMPORTED_MODULE_4___default.a.filter('momentDate', function (value)
   return moment__WEBPACK_IMPORTED_MODULE_3___default()(value).format("MMM Do YY");
 });
 
-vue__WEBPACK_IMPORTED_MODULE_4___default.a.prototype.$gate = new _Gate__WEBPACK_IMPORTED_MODULE_10__["default"](window.user);
+vue__WEBPACK_IMPORTED_MODULE_4___default.a.prototype.$gate = new _Gate__WEBPACK_IMPORTED_MODULE_11__["default"](window.user);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
