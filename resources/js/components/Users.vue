@@ -131,7 +131,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(user, index) in users" :key="index">
+              <tr v-for="(user, index) in users.data" :key="index">
                 <td>{{user.id}}</td>
                 <td>{{user.name | upTxt}}</td>
                 <td>{{user.email}}</td>
@@ -145,6 +145,7 @@
             </tbody>
           </table>
         </div>
+        <pagination :data="users" @pagination-change-page="getResults"></pagination>
       </div>
     </div>
     <not-found v-if="!$gate.isAdminOrAuthor()"></not-found>
@@ -173,6 +174,12 @@ export default {
     this.loadUsers();
   },
   methods: {
+    // Our method to GET results from a Laravel endpoint
+    getResults(page = 1) {
+      axios.get("api/user?page=" + page).then(response => {
+        this.users = response.data;
+      });
+    },
     deleteUser(id) {
       Swal.fire({
         title: "Are you sure?",
@@ -201,7 +208,7 @@ export default {
       if (this.$gate.isAdminOrAuthor()) {
         axios.get("/api/user").then(({ data }) => {
           console.log(data);
-          this.users = data.data;
+          this.users = data;
         });
       }
     },
